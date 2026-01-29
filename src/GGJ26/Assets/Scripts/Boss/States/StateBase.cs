@@ -1,0 +1,31 @@
+using UnityEngine;
+
+public class StateBase : MonoBehaviour
+{
+    protected StateBase _subState;
+    protected BossController Controller;
+    protected bool _isDone;
+
+    public bool IsDone => _isDone;
+
+    public void SetController(BossController controller)
+    {
+        Controller = controller;
+    }
+
+    // ############## OVERRIDABLE METHODS ##############
+    public virtual void OnStateEnter()
+    {
+        _isDone = false;
+    }
+
+    public virtual void OnStateExit()
+    {
+
+    }
+
+    public virtual void OnStateUpdate()
+    {
+        _subState?.OnStateUpdate();
+    }
+}
