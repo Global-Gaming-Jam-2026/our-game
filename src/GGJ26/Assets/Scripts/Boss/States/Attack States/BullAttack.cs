@@ -43,7 +43,7 @@ public class BullAttack : StateBase
             .Append(Controller.Body.DOMove(_chargeStartPos, 1.5f).SetEase(Ease.InOutSine)) // moving to start position
             .Append(Controller.Body.DOMove(_chargeEndPos, 1.5f).SetEase(Ease.InSine).SetDelay(0.75f) // swiping across the screen after delay of 0.75 seconds
                 .OnStart(() => _playerDamageCollider.gameObject.SetActive(true)) // activating player damage collider when swipe starts
-                .OnComplete(() => _playerDamageCollider.gameObject.SetActive(false))) //deactivating player damage collider when swipe ends
+                .OnComplete(() => _playerDamageCollider.gameObject.SetActive(false))) // deactivating player damage collider when swipe ends
             .Append(Controller.Body.transform.DOShakePosition(0.5f, 0.5f, 90)) // shaking a bit when swipe ends
             .Append(Controller.Body.DOMove(startPosition, 1.5f).SetEase(Ease.InOutSine).SetDelay(0.2f)) // returning to start position
             .OnComplete(() => _isDone = true); //signalling the state is complete
