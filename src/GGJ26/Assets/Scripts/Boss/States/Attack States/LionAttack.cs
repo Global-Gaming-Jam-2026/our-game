@@ -15,6 +15,7 @@ public class LionAttack : StateBase
 
     public override void OnStateEnter()
     {
+        Debug.Log("Starting Lion Attack");
         base.OnStateEnter();
 
         _chosenRoarPosition = ChooseRoarPosition();
