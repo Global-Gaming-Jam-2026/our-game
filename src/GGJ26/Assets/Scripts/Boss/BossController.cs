@@ -5,9 +5,13 @@ public class BossController : MonoBehaviour
 {
     StateMachine _machine;
 
+    [SerializeField] Rigidbody2D _body;
+
     [Header("States")]
     [SerializeField] IdleState _idleState;
     [SerializeField] AttackState _attackState;
+
+    public Rigidbody2D Body => _body;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
