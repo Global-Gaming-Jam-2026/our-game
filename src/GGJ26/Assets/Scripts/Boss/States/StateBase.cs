@@ -5,6 +5,9 @@ public class StateBase : MonoBehaviour
     protected StateBase _subState;
     protected BossController Controller;
     protected bool _isDone;
+    protected float _startTime;
+
+    public float StateTime => Time.time - _startTime;
 
     public bool IsDone => _isDone;
 
@@ -17,6 +20,7 @@ public class StateBase : MonoBehaviour
     public virtual void OnStateEnter()
     {
         _isDone = false;
+        _startTime = Time.time;
     }
 
     public virtual void OnStateExit()

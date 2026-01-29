@@ -10,7 +10,7 @@ public class AttackState : StateBase
     {
         base.OnStateEnter();
         _subState = null;
-        _attackStates = GetComponentsInChildren<StateBase>().ToList();
+        _attackStates = GetComponentsInChildren<StateBase>(true).ToList();
         _attackStates.Remove(this);
         ChooseRandomAttack();
     }
