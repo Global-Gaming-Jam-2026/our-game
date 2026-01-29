@@ -1,0 +1,70 @@
+name: Build Godot
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'src/**'
+      - 'assets/**'
+      - 'project.godot'
+      - 'export_presets.cfg'
+  workflow_dispatch:
+
+env:
+  GODOT_VERSION: 4.2.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.2.1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup export templates
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+
+      - name: Build Windows
+        run: |
+          mkdir -v -p builds/windows
+          godot --headless --verbose --export-release "Windows Desktop" builds/windows/game.exe
+        continue-on-error: true
+
+      - name: Build Linux
+        run: |
+          mkdir -v -p builds/linux
+          godot --headless --verbose --export-release "Linux/X11" builds/linux/game.x86_64
+        continue-on-error: true
+
+      - name: Build Web
+        run: |
+          mkdir -v -p builds/web
+          godot --headless --verbose --export-release "Web" builds/web/index.html
+        continue-on-error: true
+
+      - name: Upload Windows Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: godot-windows
+          path: builds/windows/
+          if-no-files-found: ignore
+
+      - name: Upload Linux Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: godot-linux
+          path: builds/linux/
+          if-no-files-found: ignore
+
+      - name: Upload Web Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: godot-web
+          path: builds/web/
+          if-no-files-found: ignore
