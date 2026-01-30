@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : Entity
@@ -35,6 +36,7 @@ public class PlayerController : Entity
     [SerializeField] PlayerRunState _runState;
     [SerializeField] PlayerJumpState _jumpState;
     [SerializeField] PlayerFallState _fallState;
+    [SerializeField] PlayerWhipState _whipState;
 
     Collider2D _groundCollider;
 
@@ -43,6 +45,7 @@ public class PlayerController : Entity
 
     private void Start()
     {
+        InitAnimator();
         InitMachine();
         _machine.SetState(_idleState);
     }
@@ -54,6 +57,12 @@ public class PlayerController : Entity
         return overlaps.Length > 0;
     }
 
+    bool IsMoving(out float xInput)
+    {
+        xInput = _actions.Player.Move.ReadValue<Vector2>().x;
+        return Mathf.Abs(xInput) > Mathf.Epsilon;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
@@ -63,15 +72,32 @@ public class PlayerController : Entity
     private void Update()
     {
         SelectState();
+        if (_machine.State != _whipState)
+        {
+            HandleFacingDirection();
+        }
+    }
+
+    private void HandleFacingDirection()
+    {
+        if (IsMoving(out float xInput))
+        {
+            int direction = Mathf.RoundToInt(Mathf.Sign(xInput));
+            float yRotation = direction > 0 ? 0f : 180f;
+            transform.rotation = Quaternion.Euler(Vector3.up * yRotation);
+        }
     }
 
     void SelectState()
     {
+        //if (_actions.Player.Attack.WasPressedThisFrame())
+        //{
+        //    _machine.SetState(_whipState);
+        //}
         bool isGrounded = CastForGrounded();
         if (isGrounded)
         {
-            float xInput = _actions.Player.Move.ReadValue<Vector2>().x;
-            if (Mathf.Abs(xInput) > Mathf.Epsilon)
+            if (IsMoving(out float xInput))
             {
                 _machine.SetState(_runState);
             }

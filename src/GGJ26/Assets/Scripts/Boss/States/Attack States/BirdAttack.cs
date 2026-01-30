@@ -46,11 +46,17 @@ public class BirdAttack : StateBase
     {
         if (Time.time >= _shootTime + _projectileInterval)
         {
-            Projectile nextProj = _projectileParent.GetNextProjectile();
+            DamageCollider nextProj = _projectileParent.GetNextProjectile();
             if (nextProj != null)
             {
                 nextProj.transform.position = Controller.Body.transform.position;
                 nextProj.gameObject.SetActive(true);
+                nextProj.GetComponent<Rigidbody2D>().linearVelocity =
+                    GamePhysics.InitialVelocityFromTarget(
+                        Controller.Body.transform.position, 
+                        PlayerController.Instance.transform.position + 0.5f * Vector3.up, 
+                        1f, 
+                        Physics2D.gravity);
             }
             _shootTime = Time.time;
         }

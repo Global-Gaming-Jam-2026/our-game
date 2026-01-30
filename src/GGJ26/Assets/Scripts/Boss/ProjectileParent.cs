@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class ProjectileParent : MonoBehaviour
 {
-    Projectile[] projectiles;
+    DamageCollider[] projectiles;
 
     private void Start()
     {
-        projectiles = GetComponentsInChildren<Projectile>(true);
+        projectiles = GetComponentsInChildren<DamageCollider>(true);
     }
 
-    public Projectile GetNextProjectile()
+    public DamageCollider GetNextProjectile()
     {
         for (int i = 0; i < projectiles.Length; i++)
         {
