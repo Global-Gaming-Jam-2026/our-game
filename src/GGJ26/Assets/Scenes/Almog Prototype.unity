@@ -23426,8 +23426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _masks:
-  - {fileID: 89971289}
   - {fileID: 773020611}
+  - {fileID: 89971289}
   _bossCollider: {fileID: 329874462}
 --- !u!1 &737608704
 GameObject:
