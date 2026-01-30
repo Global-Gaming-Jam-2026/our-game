@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 using DG.Tweening;
 
 /// <summary>
@@ -10,7 +11,7 @@ public class MainMenuUI : MonoBehaviour
 {
     [Header("UI Elements")]
     [SerializeField] private CanvasGroup menuPanel;
-    [SerializeField] private Text titleText;
+    [SerializeField] private TMP_Text titleText;
 
     [Header("Buttons")]
     [SerializeField] private Button playButton;

@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using DG.Tweening;
 
 public class GameOverUI : MonoBehaviour
 {
     [Header("Win")]
     [SerializeField] private CanvasGroup winPanel;
-    [SerializeField] private Text winText;
+    [SerializeField] private TMP_Text winText;
 
     [Header("Lose")]
     [SerializeField] private CanvasGroup losePanel;
-    [SerializeField] private Text loseText;
+    [SerializeField] private TMP_Text loseText;
 
     [Header("Buttons")]
     [SerializeField] private Button restartButton;

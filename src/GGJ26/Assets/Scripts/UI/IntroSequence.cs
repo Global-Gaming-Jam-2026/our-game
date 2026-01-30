@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 using DG.Tweening;
 
 public class IntroSequence : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private CanvasGroup introPanel;
-    [SerializeField] private Text titleText;
-    [SerializeField] private Text storyText;
+    [SerializeField] private TMP_Text titleText;
+    [SerializeField] private TMP_Text storyText;
 
     [Header("Settings")]
     [SerializeField] private float titleDuration = 2f;
@@ -47,9 +48,9 @@ public class IntroSequence : MonoBehaviour
         // Show title
         if (titleText != null)
         {
-            titleText.DOFade(1f, 0.5f).SetUpdate(true);
+            DOTween.ToAlpha(() => titleText.color, x => titleText.color = x, 1f, 0.5f).SetUpdate(true);
             yield return new WaitForSecondsRealtime(titleDuration);
-            titleText.DOFade(0f, 0.5f).SetUpdate(true);
+            DOTween.ToAlpha(() => titleText.color, x => titleText.color = x, 0f, 0.5f).SetUpdate(true);
         }
 
         // Show story
@@ -58,9 +59,9 @@ public class IntroSequence : MonoBehaviour
             foreach (string line in storyLines)
             {
                 storyText.text = line;
-                storyText.DOFade(1f, 0.3f).SetUpdate(true);
+                DOTween.ToAlpha(() => storyText.color, x => storyText.color = x, 1f, 0.3f).SetUpdate(true);
                 yield return new WaitForSecondsRealtime(storyDuration);
-                storyText.DOFade(0f, 0.3f).SetUpdate(true);
+                DOTween.ToAlpha(() => storyText.color, x => storyText.color = x, 0f, 0.3f).SetUpdate(true);
                 yield return new WaitForSecondsRealtime(0.3f);
             }
         }
