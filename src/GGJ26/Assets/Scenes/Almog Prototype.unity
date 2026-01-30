@@ -5212,6 +5212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1726293583}
   - component: {fileID: 1726293584}
+  - component: {fileID: 1726293585}
   m_Layer: 8
   m_Name: SpearParent
   m_TagString: Untagged
@@ -5257,6 +5258,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spears: []
+--- !u!114 &1726293585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726293582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599ca9554760158418198d9e39f883ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRigidbody: {fileID: 888833232}
+  offset: {x: 0, y: 0.3}
+  springStrength: 60
+  damping: 5
 --- !u!1 &1756964444
 GameObject:
   m_ObjectHideFlags: 0
@@ -6116,8 +6133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f18c8913d797646824c7e7b3471174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minIdleTime: 2
-  _maxIdleTime: 3
+  _minIdleTime: 1.5
+  _maxIdleTime: 2
 --- !u!1 &2096249488
 GameObject:
   m_ObjectHideFlags: 0
