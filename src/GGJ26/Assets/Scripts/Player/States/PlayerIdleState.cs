@@ -5,6 +5,7 @@ public class PlayerIdleState : StateBase
     public override void OnStateEnter()
     {
         base.OnStateEnter();
+        Controller.Animator.SetBool("IsRunning", false);
         _isDone = true;
     }
 

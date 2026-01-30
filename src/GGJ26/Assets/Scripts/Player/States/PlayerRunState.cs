@@ -5,6 +5,7 @@ public class PlayerRunState : StateBase
     public override void OnStateEnter()
     {
         base.OnStateEnter();
+        Controller.Animator.SetBool("IsRunning", true);
         _isDone = true;
     }
 
