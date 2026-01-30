@@ -46,6 +46,10 @@ public class HealthModule : MonoBehaviour
         {
             EventBus.Instance.OnPlayerHealthChange?.Invoke(healthPercentage);
         }
+        else if (_attachedEntity as BossController != null)
+        {
+            EventBus.Instance.OnBossHealthChange?.Invoke(healthPercentage);
+        }
 
         if (_currentHP == 0)
         {
