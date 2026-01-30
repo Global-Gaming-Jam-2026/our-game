@@ -1,3 +1,8 @@
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
+
 public class GameOverUI : MonoBehaviour
 {
     [Header("Win")]
@@ -13,14 +18,19 @@ public class GameOverUI : MonoBehaviour
 
     private void Start()
     {
+        // Hide panels at start
         if (winPanel != null) winPanel.gameObject.SetActive(false);
         if (losePanel != null) losePanel.gameObject.SetActive(false);
 
         if (restartButton != null)
             restartButton.onClick.AddListener(OnRestartClicked);
 
-        if (GameManager.Instance != null)
-            GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
+        // 1. Subscribe to the EventBus instead of GameManager
+        if (EventBus.Instance != null)
+        {
+            EventBus.Instance.OnPlayerDeath += ShowLoseScreen;
+            EventBus.Instance.OnBossDefeat += ShowWinScreen;
+        }
     }
 
     private void OnGameStateChanged(GameManager.GameState state)
@@ -53,12 +63,24 @@ public class GameOverUI : MonoBehaviour
 
     private void OnRestartClicked()
     {
-        GameManager.Instance?.RestartGame();
+        Debug.Log("Restart button was physically pressed!");
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RestartGame();
+        }
+        else
+        {
+            Debug.LogError("GameManager Instance is NULL! Did you forget to put a GameManager in the scene?");
+        }
     }
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
-            GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
+        // 3. Unsubscribe to prevent memory leaks/errors
+        if (EventBus.Instance != null)
+        {
+            EventBus.Instance.OnPlayerDeath -= ShowLoseScreen;
+            EventBus.Instance.OnBossDefeat -= ShowWinScreen;
+        }
     }
 }

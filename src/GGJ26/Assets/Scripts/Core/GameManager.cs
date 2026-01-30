@@ -14,13 +14,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
         {
             Destroy(gameObject);
-            return;
         }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void StartGame()
@@ -71,6 +72,6 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Almog Prototype");
     }
 }
