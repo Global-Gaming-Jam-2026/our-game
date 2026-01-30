@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum Mask
 {
-    Lion,
+    Bird,
     Human,
     Bear
 }

@@ -34,8 +34,8 @@ public class LionAttack : StateBase
         Vector2 position = Controller.Body.transform.position;
         _moveToRoarPosition = DOTween.Sequence();
         _moveToRoarPosition
-            .Append(Controller.Body.DOMove(_chosenRoarPosition, 1f).SetEase(Ease.InOutExpo))
-            .Append(Controller.Body.transform.DOShakePosition(_roarChargeUpTime, 0.4f, 60)
+            .Append(Controller.Body.DOMove(_chosenRoarPosition, 1f * CooldownHolder.GlobalCooldownMultiplier).SetEase(Ease.InOutExpo))
+            .Append(Controller.Body.transform.DOShakePosition(_roarChargeUpTime * CooldownHolder.GlobalCooldownMultiplier, 0.4f, 60)
                 .OnStart(() =>
                 {
                     _roarIndicator.transform.position = Controller.Body.transform.position;
@@ -47,8 +47,8 @@ public class LionAttack : StateBase
                     _roarCollider.transform.position = Controller.Body.transform.position;
                     _roarCollider.gameObject.SetActive(true);
                 })
-                .SetDelay(_indicatorAppearDelay))
-            .Append(Controller.Body.DOMove(position, 1.5f).SetEase(Ease.InOutExpo).SetDelay(_roarDuration)
+                .SetDelay(_indicatorAppearDelay * CooldownHolder.GlobalCooldownMultiplier))
+            .Append(Controller.Body.DOMove(position, 1.5f * CooldownHolder.GlobalCooldownMultiplier).SetEase(Ease.InOutExpo).SetDelay(_roarDuration)
                 .OnStart(() => _roarCollider.gameObject.SetActive(false))
                 .OnComplete(() => _isDone = true));
     }
@@ -69,10 +69,5 @@ public class LionAttack : StateBase
 
         int randomIndex = Random.Range(0, possiblePositions.Count);
         return possiblePositions[randomIndex];
-    }
-
-    private void OnEnable()
-    {
-        GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 5, Mask.Lion);
     }
 }

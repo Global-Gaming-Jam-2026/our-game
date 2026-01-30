@@ -19,7 +19,7 @@ public class BirdAttack : StateBase
         base.OnStateEnter();
         _startTargetPosition = ChooseRandomTargetPosition();
         _startPosition = Controller.Body.position;
-        _shootTime = Time.time - _projectileInterval / 2f;
+        _shootTime = Time.time - _projectileInterval * CooldownHolder.GlobalCooldownMultiplier / 2f;
     }
 
     private Vector2 ChooseRandomTargetPosition()
@@ -78,5 +78,10 @@ public class BirdAttack : StateBase
             Controller.Body.position = _startPosition;
             _isDone = true;
         }
+    }
+
+    private void OnEnable()
+    {
+        GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 5, Mask.Bird);
     }
 }

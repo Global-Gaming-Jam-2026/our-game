@@ -20,7 +20,7 @@ public class Spear : MonoBehaviour
     {
         _launchSequence = DOTween.Sequence();
         _launchSequence
-            .Append(transform.DOLocalMove(transform.localPosition + 0.5f * transform.right, 0.3f).SetDelay(1.2f + 0.35f * index)
+            .Append(transform.DOLocalMove(transform.localPosition + 0.5f * transform.right, 0.3f).SetDelay(1.2f * CooldownHolder.GlobalCooldownMultiplier + 0.35f * index)
                 .OnComplete(() => LaunchSpear()));
         _launchSequence.Play();
     }

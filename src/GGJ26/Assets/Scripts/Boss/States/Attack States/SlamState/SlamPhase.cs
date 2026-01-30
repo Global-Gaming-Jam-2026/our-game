@@ -30,7 +30,7 @@ public class SlamPhase : StateBase
 
         // Phase 3: Slam to player position
         _slamSequence
-            .Append(Controller.Body.transform.DOMove(targetPosition, slamSpeed)
+            .Append(Controller.Body.transform.DOMove(targetPosition, slamSpeed * CooldownHolder.GlobalCooldownMultiplier)
                 .SetEase(Ease.InQuint))
             .AppendCallback(OnSlamImpact);
 
