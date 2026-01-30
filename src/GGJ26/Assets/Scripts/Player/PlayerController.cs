@@ -35,6 +35,7 @@ public class PlayerController : Entity
     [SerializeField] PlayerRunState _runState;
     [SerializeField] PlayerJumpState _jumpState;
     [SerializeField] PlayerFallState _fallState;
+    [SerializeField] PlayerWhipState _whipState;
 
     Collider2D _groundCollider;
 
@@ -43,6 +44,7 @@ public class PlayerController : Entity
 
     private void Start()
     {
+        InitAnimator();
         InitMachine();
         _machine.SetState(_idleState);
     }
@@ -67,6 +69,10 @@ public class PlayerController : Entity
 
     void SelectState()
     {
+        if (_actions.Player.Attack.WasPressedThisFrame())
+        {
+            _machine.SetState(_whipState);
+        }
         bool isGrounded = CastForGrounded();
         if (isGrounded)
         {

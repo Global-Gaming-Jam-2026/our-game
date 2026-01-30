@@ -35,7 +35,7 @@ public class Spear : MonoBehaviour
     private void OnBecameInvisible()
     {
         _launchSequence.Kill();
-        gameObject.SetActive(false);
         transform.parent = _originalParent;
+        gameObject.SetActive(false);
     }
 }
