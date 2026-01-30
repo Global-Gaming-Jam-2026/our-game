@@ -2886,7 +2886,7 @@ MonoBehaviour:
   _runState: {fileID: 479283628}
   _jumpState: {fileID: 2111413589}
   _fallState: {fileID: 880672779}
-  _whipState: {fileID: 0}
+  _whipState: {fileID: 1748299885}
 --- !u!50 &888833235
 Rigidbody2D:
   serializedVersion: 5
@@ -5724,6 +5724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1748299884}
+  - component: {fileID: 1748299885}
   m_Layer: 7
   m_Name: WhipState
   m_TagString: Untagged
@@ -5748,6 +5749,20 @@ Transform:
   - {fileID: 1958590335}
   m_Father: {fileID: 219842663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1748299885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748299883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be557bf3f23e2664f9578f29b03dfb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sideWhipAnimation: {fileID: 0}
+  _upWhipAnimation: {fileID: 0}
 --- !u!1 &1756964444
 GameObject:
   m_ObjectHideFlags: 0
