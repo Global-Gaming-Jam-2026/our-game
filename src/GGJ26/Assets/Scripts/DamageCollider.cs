@@ -11,9 +11,18 @@ public class DamageCollider : MonoBehaviour
         if (GamePhysics.IsInLayerMask(collision.gameObject, _collidingLayers))
         {
             gameObject.SetActive(!_disappearsWhenHit);
-            if (collision.gameObject.TryGetComponent(out HealthModule health))
+            HealthModule health;
+            if (collision.gameObject.TryGetComponent(out health))
             {
                 health.TakeDamage(_damageDealt);
+            }
+            else
+            {
+                health = collision.gameObject.GetComponentInParent<HealthModule>();
+                if (health != null)
+                {
+                    health.TakeDamage(_damageDealt);
+                }
             }
         }
     }

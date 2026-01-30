@@ -8,7 +8,7 @@ public class PlayerRunState : StateBase
         _isDone = true;
     }
 
-    public override void OnStateUpdate()
+    public override void OnStateFixedUpdate()
     {
         PlayerController player = Controller as PlayerController;
         if (player != null)

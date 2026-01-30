@@ -19,12 +19,6 @@ public class BossController : Entity
     private void Update()
     {
         SelectState();
-
-        //DEBUG, REMOVE LATER
-        if (PlayerController.Instance.InputActions.Player.Attack.WasPressedThisFrame())
-        {
-            GetComponent<HealthModule>().TakeDamage(10);
-        }
     }
 
     void SelectState()
