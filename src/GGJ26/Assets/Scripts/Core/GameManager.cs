@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public enum GameState { Menu, Playing, Won, Lost }
+    public enum GameState { Menu, Playing, Paused, Won, Lost }
 
     public GameState CurrentState { get; private set; } = GameState.Menu;
 
@@ -37,6 +38,30 @@ public class GameManager : MonoBehaviour
         SetState(GameState.Lost);
     }
 
+    public void PauseGame()
+    {
+        if (CurrentState == GameState.Playing)
+        {
+            Time.timeScale = 0f;
+            SetState(GameState.Paused);
+        }
+    }
+
+    public void ResumeGame()
+    {
+        if (CurrentState == GameState.Paused)
+        {
+            Time.timeScale = 1f;
+            SetState(GameState.Playing);
+        }
+    }
+
+    public void QuitToMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
     private void SetState(GameState newState)
     {
         CurrentState = newState;
@@ -45,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
