@@ -32,4 +32,9 @@ public class StateBase : MonoBehaviour
     {
         _subState?.OnStateUpdate();
     }
+
+    public virtual void OnStateFixedUpdate()
+    {
+        _subState?.OnStateFixedUpdate();
+    }
 }

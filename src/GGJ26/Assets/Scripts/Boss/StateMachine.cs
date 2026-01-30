@@ -26,7 +26,6 @@ public class StateMachine : MonoBehaviour
     {
         if (_currentState == null || _currentState.IsDone || forceReset)
         {
-            Debug.Log("Switching");
             _currentState?.OnStateExit();
             _currentState = newState;
             _currentState.OnStateEnter();
@@ -36,5 +35,10 @@ public class StateMachine : MonoBehaviour
     private void Update()
     {
         _currentState.OnStateUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        _currentState.OnStateFixedUpdate();
     }
 }
