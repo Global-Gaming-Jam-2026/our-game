@@ -90,10 +90,10 @@ public class PlayerController : Entity
 
     void SelectState()
     {
-        //if (_actions.Player.Attack.WasPressedThisFrame())
-        //{
-        //    _machine.SetState(_whipState);
-        //}
+        if (_actions.Player.Attack.WasPressedThisFrame())
+        {
+            _machine.SetState(_whipState, true);
+        }
         bool isGrounded = CastForGrounded();
         if (isGrounded)
         {
