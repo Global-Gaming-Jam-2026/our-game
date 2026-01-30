@@ -63,5 +63,8 @@ public class LionAttack : StateBase
         return possiblePositions[randomIndex];
     }
 
-
+    private void OnEnable()
+    {
+        GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 5);
+    }
 }
