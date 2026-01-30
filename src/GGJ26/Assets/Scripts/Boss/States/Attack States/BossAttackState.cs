@@ -1,11 +1,32 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public enum Mask
+{
+    Lion,
+    Human,
+    Bear
+}
+
 public class BossAttackState : StateBase
 {
+    [System.Serializable]
+    class MaskToGameobject
+    {
+        public Mask mask;
+        public GameObject maskObject;
+    }
+
+    [SerializeField] List<MaskToGameobject> _maskLibrary;
+    [SerializeField] MaskRotator _maskRotator;
+    
     List<StateBase> _attackStates;
     List<int> _attackWeights;
+
+    Mask _nextMask;
+    bool _queueNewMask;
 
     private void Start()
     {
@@ -17,7 +38,15 @@ public class BossAttackState : StateBase
         base.OnStateEnter();
         _subState = null;
         
-        ChooseRandomAttack();
+        if (_queueNewMask)
+        {
+            StartCoroutine(AddNewMask());
+        }
+        else
+        {
+
+            StartCoroutine(ChooseRandomAttack());
+        }
     }
 
     private void SetupSubStates()
@@ -31,10 +60,17 @@ public class BossAttackState : StateBase
         }
     }
 
-    void ChooseRandomAttack()
+    IEnumerator ChooseRandomAttack()
     {
         int randomIndex = WeightRandomSelector.ChooseRandomFromWeightedValues(_attackWeights);
         RebalanceWeights(randomIndex);
+
+        _maskRotator.RotateMaskToCamera(randomIndex);
+        while (_maskRotator.Rotating)
+        {
+            yield return null;
+        }
+
         _subState = _attackStates[randomIndex];
         _subState.OnStateEnter();
     }
@@ -52,19 +88,42 @@ public class BossAttackState : StateBase
     public override void OnStateUpdate()
     {
         base.OnStateUpdate();
-        if (_subState.IsDone)
+        if (_subState != null)
         {
-            _isDone = true;
+            if (_subState.IsDone)
+            {
+                _isDone = true;
+            }
         }
     }
 
-    public void RegisterNewAttack(StateBase newAttackState, int newWeight)
+    public void RegisterNewAttack(StateBase newAttackState, int newWeight, Mask mask)
     {
         if (!_attackStates.Contains(newAttackState))
         {
             _attackStates.Add(newAttackState);
             _attackWeights.Add(newWeight);
             newAttackState.SetController(Controller);
+            _nextMask = mask;
+            _queueNewMask = true;
         }
+    }
+
+    IEnumerator AddNewMask()
+    {
+        //Do the "insert mask" animation, and then...
+        MaskToGameobject data = _maskLibrary.FirstOrDefault(pair => pair.mask == _nextMask);
+        if (data != null)
+        {
+            GameObject maskGameObject = data.maskObject;
+            _maskRotator.AddMask(maskGameObject);
+            maskGameObject.SetActive(true);
+        }
+        while (_maskRotator.InArrangement)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        _queueNewMask = false;
+        StartCoroutine(ChooseRandomAttack());
     }
 }
