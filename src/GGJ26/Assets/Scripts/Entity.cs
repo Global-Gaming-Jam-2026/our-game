@@ -6,6 +6,7 @@ public class Entity : MonoBehaviour
 
     protected StateMachine _machine;
     protected Animator _animator;
+    protected bool _isOperating;
 
     public Rigidbody2D Body => _body;
     public Animator Animator => _animator;

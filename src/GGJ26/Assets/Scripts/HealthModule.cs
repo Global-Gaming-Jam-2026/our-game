@@ -57,12 +57,13 @@ public class HealthModule : MonoBehaviour
     {
         if (_attachedEntity as BossController != null) //it's the boss that died, display victory
         {
-
+            EventBus.Instance.OnBossDefeat?.Invoke();
         }
         else if (_attachedEntity as PlayerController != null) //skill issue from the player, display lose
         {
-
+            EventBus.Instance.OnPlayerDeath?.Invoke();
         }
+        enabled = false;
     }
 
     void ActivatePercentageBasedEffect(float percentage)
