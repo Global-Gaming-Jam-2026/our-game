@@ -11,6 +11,7 @@ public class EventBus : MonoBehaviour
     }
 
     public Action<float> OnPlayerHealthChange;
+    public Action<float> OnBossHealthChange;
     public Action OnBossDefeat;
     public Action OnPlayerDeath;
 }
