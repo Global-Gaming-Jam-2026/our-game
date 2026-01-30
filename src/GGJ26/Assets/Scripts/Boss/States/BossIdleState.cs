@@ -19,7 +19,7 @@ public class BossIdleState : StateBase
 
     void DetermineIdleTime()
     {
-        float waitTime = Random.Range(_minIdleTime, _maxIdleTime);
+        float waitTime = Random.Range(_minIdleTime * CooldownHolder.GlobalCooldownMultiplier, _maxIdleTime * CooldownHolder.GlobalCooldownMultiplier);
         _endTime = Time.time + waitTime;
     }
 
