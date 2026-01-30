@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossAttackState : StateBase
 {
     List<StateBase> _attackStates;
-    int[] _attackWeights;
+    List<int> _attackWeights;
 
     private void Start()
     {
@@ -24,10 +24,10 @@ public class BossAttackState : StateBase
     {
         _attackStates = GetComponentsInChildren<StateBase>().ToList();
         _attackStates.Remove(this);
-        _attackWeights = new int[_attackStates.Count];
+        _attackWeights = new List<int>();
         for (int i = 0; i < _attackStates.Count; i++)
         {
-            _attackWeights[i] = 1;
+            _attackWeights.Add(1);
         }
     }
 
@@ -41,7 +41,7 @@ public class BossAttackState : StateBase
 
     void RebalanceWeights(int indexToExclude)
     {
-        for (int i = 0; i < _attackWeights.Length; i++)
+        for (int i = 0; i < _attackWeights.Count; i++)
         {
             if (i == indexToExclude)
                 continue;
@@ -55,6 +55,16 @@ public class BossAttackState : StateBase
         if (_subState.IsDone)
         {
             _isDone = true;
+        }
+    }
+
+    public void RegisterNewAttack(StateBase newAttackState, int newWeight)
+    {
+        if (!_attackStates.Contains(newAttackState))
+        {
+            _attackStates.Add(newAttackState);
+            _attackWeights.Add(newWeight);
+            newAttackState.SetController(Controller);
         }
     }
 }

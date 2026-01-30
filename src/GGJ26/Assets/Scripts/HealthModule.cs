@@ -1,12 +1,25 @@
 using DG.Tweening;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthModule : MonoBehaviour
 {
+    [System.Serializable]
+    class PercentageToCallback
+    {
+        [Range(0, 100)] public int Percentage;
+        public UnityEvent Callback;
+    }
+
     [SerializeField][Min(1)] int _startHP;
     [SerializeField]
     [Tooltip("How long, in seconds, the entity will not take damage after being hit")]float _iframeLength;
+
+    [Space]
+
+    [SerializeField] List<PercentageToCallback> _hpEvents;
 
     Entity _attachedEntity;
     int _currentHP;
@@ -26,6 +39,14 @@ public class HealthModule : MonoBehaviour
         _isInIframes = true;
         DOVirtual.DelayedCall(_iframeLength, () => _isInIframes = false, false);
         _currentHP = System.Math.Max(_currentHP - amount, 0);
+        float healthPercentage = (float)_currentHP / _startHP;
+        ActivatePercentageBasedEffect(healthPercentage);
+
+        if (_attachedEntity as PlayerController != null)
+        {
+            EventBus.Instance.OnPlayerHealthChange?.Invoke(healthPercentage);
+        }
+
         if (_currentHP == 0)
         {
             EndGame();
@@ -41,6 +62,16 @@ public class HealthModule : MonoBehaviour
         else if (_attachedEntity as PlayerController != null) //skill issue from the player, display lose
         {
 
+        }
+    }
+
+    void ActivatePercentageBasedEffect(float percentage)
+    {
+        PercentageToCallback effect = _hpEvents.FirstOrDefault(e => e.Percentage / 100f >= percentage);
+        if (effect != null)
+        {
+            effect.Callback.Invoke();
+            _hpEvents.Remove(effect);
         }
     }
 }

@@ -14,4 +14,9 @@ public class HumanAttack : StateBase
     {
         _isDone = _spearParent.LaunchedSpears && _spearParent.transform.childCount == 10;
     }
+
+    private void OnEnable()
+    {
+        GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 7);
+    }
 }
