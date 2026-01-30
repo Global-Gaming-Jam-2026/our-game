@@ -46,7 +46,7 @@ public class BirdAttack : StateBase
     {
         if (Time.time >= _shootTime + _projectileInterval)
         {
-            Projectile nextProj = _projectileParent.GetNextProjectile();
+            DamageCollider nextProj = _projectileParent.GetNextProjectile();
             if (nextProj != null)
             {
                 nextProj.transform.position = Controller.Body.transform.position;

@@ -26,7 +26,7 @@ public class SpearParent : MonoBehaviour
             nextSpear.gameObject.SetActive(true);
             nextSpear.LaunchDelayed(i);
         }
-        DOVirtual.DelayedCall(1.6f, () => _launchedSpears = true);
+        DOVirtual.DelayedCall(1.6f, () => _launchedSpears = true, false);
     }
 
     Spear GetNextSpear()

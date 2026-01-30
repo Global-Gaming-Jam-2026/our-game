@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 47790924}
   - component: {fileID: 47790923}
   - component: {fileID: 47790922}
+  - component: {fileID: 47790926}
   m_Layer: 8
   m_Name: Spear
   m_TagString: Untagged
@@ -398,6 +399,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6e982efc692a43856019a385a0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &47790926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47790920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 7
+  _disappearsWhenHit: 0
 --- !u!1 &106330320
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +584,8 @@ MonoBehaviour:
   _collidingLayers:
     serializedVersion: 2
     m_Bits: 192
+  _damageDealt: 3
+  _disappearsWhenHit: 1
 --- !u!1 &131443310
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +815,7 @@ GameObject:
   - component: {fileID: 132994780}
   - component: {fileID: 132994779}
   - component: {fileID: 132994778}
+  - component: {fileID: 132994782}
   m_Layer: 8
   m_Name: Spear (6)
   m_TagString: Untagged
@@ -1061,6 +1082,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6e982efc692a43856019a385a0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &132994782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132994776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 7
+  _disappearsWhenHit: 0
 --- !u!1 &136346726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 136346727}
   - component: {fileID: 136346728}
+  - component: {fileID: 136346729}
   m_Layer: 8
   m_Name: PlayerDamageColliderBull
   m_TagString: Untagged
@@ -1139,6 +1178,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &136346729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136346726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 10
+  _disappearsWhenHit: 0
 --- !u!1 &184926438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 253012295}
   - component: {fileID: 253012296}
+  - component: {fileID: 253012297}
   m_Layer: 8
   m_Name: PlayerDamageColliderLion
   m_TagString: Untagged
@@ -1286,6 +1343,23 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 6.8
+--- !u!114 &253012297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253012294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 10
+  _disappearsWhenHit: 0
 --- !u!1 &329800280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 337601684}
   - component: {fileID: 337601685}
+  - component: {fileID: 337601686}
   m_Layer: 8
   m_Name: Boss
   m_TagString: Untagged
@@ -1446,6 +1521,20 @@ MonoBehaviour:
   _body: {fileID: 329874461}
   _idleState: {fileID: 2071708053}
   _attackState: {fileID: 558103656}
+--- !u!114 &337601686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337601683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0737930b3a9a011489ada30f52d38bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startHP: 100
+  _iframeLength: 0
 --- !u!1 &359029446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1703,8 @@ MonoBehaviour:
   _collidingLayers:
     serializedVersion: 2
     m_Bits: 192
+  _damageDealt: 3
+  _disappearsWhenHit: 1
 --- !u!1 &361937254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,6 +1873,8 @@ MonoBehaviour:
   _collidingLayers:
     serializedVersion: 2
     m_Bits: 192
+  _damageDealt: 3
+  _disappearsWhenHit: 1
 --- !u!1 &380287086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,6 +2130,8 @@ MonoBehaviour:
   _collidingLayers:
     serializedVersion: 2
     m_Bits: 192
+  _damageDealt: 3
+  _disappearsWhenHit: 1
 --- !u!1 &479283626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,6 +2423,8 @@ MonoBehaviour:
   _collidingLayers:
     serializedVersion: 2
     m_Bits: 192
+  _damageDealt: 3
+  _disappearsWhenHit: 1
 --- !u!1 &737608704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,6 +2593,8 @@ MonoBehaviour:
   _collidingLayers:
     serializedVersion: 2
     m_Bits: 192
+  _damageDealt: 3
+  _disappearsWhenHit: 1
 --- !u!1 &763462076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,6 +2758,7 @@ GameObject:
   - component: {fileID: 888833233}
   - component: {fileID: 888833235}
   - component: {fileID: 888833236}
+  - component: {fileID: 888833237}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -2768,6 +2868,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1}
   m_Size: {x: 0.8, y: 2}
   m_Direction: 0
+--- !u!114 &888833237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888833231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0737930b3a9a011489ada30f52d38bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startHP: 50
+  _iframeLength: 2
 --- !u!1 &991864091
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,6 +2895,7 @@ GameObject:
   - component: {fileID: 991864095}
   - component: {fileID: 991864094}
   - component: {fileID: 991864093}
+  - component: {fileID: 991864097}
   m_Layer: 8
   m_Name: Spear (3)
   m_TagString: Untagged
@@ -3047,6 +3162,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6e982efc692a43856019a385a0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &991864097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991864091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 7
+  _disappearsWhenHit: 0
 --- !u!1 &996403657
 GameObject:
   m_ObjectHideFlags: 0
@@ -3060,6 +3192,7 @@ GameObject:
   - component: {fileID: 996403661}
   - component: {fileID: 996403660}
   - component: {fileID: 996403659}
+  - component: {fileID: 996403663}
   m_Layer: 8
   m_Name: Spear (1)
   m_TagString: Untagged
@@ -3326,6 +3459,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6e982efc692a43856019a385a0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &996403663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996403657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 7
+  _disappearsWhenHit: 0
 --- !u!1 &1013739277
 GameObject:
   m_ObjectHideFlags: 0
@@ -3640,6 +3790,8 @@ MonoBehaviour:
   _collidingLayers:
     serializedVersion: 2
     m_Bits: 192
+  _damageDealt: 3
+  _disappearsWhenHit: 1
 --- !u!1 &1117281689
 GameObject:
   m_ObjectHideFlags: 0
@@ -3808,6 +3960,8 @@ MonoBehaviour:
   _collidingLayers:
     serializedVersion: 2
     m_Bits: 192
+  _damageDealt: 3
+  _disappearsWhenHit: 1
 --- !u!1 &1122676006
 GameObject:
   m_ObjectHideFlags: 0
@@ -3976,6 +4130,8 @@ MonoBehaviour:
   _collidingLayers:
     serializedVersion: 2
     m_Bits: 192
+  _damageDealt: 3
+  _disappearsWhenHit: 1
 --- !u!1 &1226882840
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,6 +4335,7 @@ GameObject:
   - component: {fileID: 1415966769}
   - component: {fileID: 1415966768}
   - component: {fileID: 1415966767}
+  - component: {fileID: 1415966771}
   m_Layer: 8
   m_Name: Spear (9)
   m_TagString: Untagged
@@ -4445,6 +4602,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6e982efc692a43856019a385a0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1415966771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415966765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 7
+  _disappearsWhenHit: 0
 --- !u!1 &1444935265
 GameObject:
   m_ObjectHideFlags: 0
@@ -4613,6 +4787,8 @@ MonoBehaviour:
   _collidingLayers:
     serializedVersion: 2
     m_Bits: 192
+  _damageDealt: 3
+  _disappearsWhenHit: 1
 --- !u!1 &1453883190
 GameObject:
   m_ObjectHideFlags: 0
@@ -4626,6 +4802,7 @@ GameObject:
   - component: {fileID: 1453883194}
   - component: {fileID: 1453883193}
   - component: {fileID: 1453883192}
+  - component: {fileID: 1453883196}
   m_Layer: 8
   m_Name: Spear (2)
   m_TagString: Untagged
@@ -4892,6 +5069,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6e982efc692a43856019a385a0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1453883196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453883190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 7
+  _disappearsWhenHit: 0
 --- !u!1 &1528359719
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,6 +5130,7 @@ GameObject:
   - component: {fileID: 1566079128}
   - component: {fileID: 1566079127}
   - component: {fileID: 1566079126}
+  - component: {fileID: 1566079130}
   m_Layer: 8
   m_Name: Spear (4)
   m_TagString: Untagged
@@ -5202,6 +5397,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6e982efc692a43856019a385a0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1566079130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566079124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 7
+  _disappearsWhenHit: 0
 --- !u!1 &1726293582
 GameObject:
   m_ObjectHideFlags: 0
@@ -5287,6 +5499,7 @@ GameObject:
   - component: {fileID: 1756964448}
   - component: {fileID: 1756964447}
   - component: {fileID: 1756964446}
+  - component: {fileID: 1756964450}
   m_Layer: 8
   m_Name: Spear (8)
   m_TagString: Untagged
@@ -5553,6 +5766,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6e982efc692a43856019a385a0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1756964450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756964444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 7
+  _disappearsWhenHit: 0
 --- !u!1 &1830168518
 GameObject:
   m_ObjectHideFlags: 0
@@ -5643,6 +5873,7 @@ GameObject:
   - component: {fileID: 1905452630}
   - component: {fileID: 1905452629}
   - component: {fileID: 1905452628}
+  - component: {fileID: 1905452632}
   m_Layer: 8
   m_Name: Spear (7)
   m_TagString: Untagged
@@ -5909,6 +6140,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6e982efc692a43856019a385a0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1905452632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905452626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 7
+  _disappearsWhenHit: 0
 --- !u!1 &2000138055
 GameObject:
   m_ObjectHideFlags: 0
@@ -6148,6 +6396,7 @@ GameObject:
   - component: {fileID: 2096249492}
   - component: {fileID: 2096249491}
   - component: {fileID: 2096249490}
+  - component: {fileID: 2096249494}
   m_Layer: 8
   m_Name: Spear (5)
   m_TagString: Untagged
@@ -6414,6 +6663,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb6e982efc692a43856019a385a0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2096249494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096249488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29a32aa5a604fe4dab92c89aec0e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collidingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageDealt: 7
+  _disappearsWhenHit: 0
 --- !u!1 &2111413587
 GameObject:
   m_ObjectHideFlags: 0
