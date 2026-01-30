@@ -6,6 +6,9 @@ public class BullAttack : StateBase
     [SerializeField] GameObject[] _chargeStartPositions;
     [SerializeField] Collider2D _playerDamageCollider;
 
+    [Tooltip("How long it takes the bull to charge across the screen. Smaller values are faster")]
+    [SerializeField][Min(0.3f)]  float _chargeDuration;
+
     Vector2 _chargeStartPos;
     Vector2 _chargeEndPos;
 
@@ -41,7 +44,7 @@ public class BullAttack : StateBase
         _attackSequence = DOTween.Sequence();
         _attackSequence
             .Append(Controller.Body.DOMove(_chargeStartPos, 1.5f).SetEase(Ease.InOutSine)) // moving to start position
-            .Append(Controller.Body.DOMove(_chargeEndPos, 1f).SetEase(Ease.InSine).SetDelay(0.5f) // swiping across the screen after delay of 0.75 seconds
+            .Append(Controller.Body.DOMove(_chargeEndPos, _chargeDuration).SetEase(Ease.InSine).SetDelay(0.5f) // swiping across the screen after delay of 0.75 seconds
                 .OnStart(() => _playerDamageCollider.gameObject.SetActive(true)) // activating player damage collider when swipe starts
                 .OnComplete(() => _playerDamageCollider.gameObject.SetActive(false))) // deactivating player damage collider when swipe ends
             .Append(Controller.Body.transform.DOShakePosition(0.5f, 0.5f, 90)) // shaking a bit when swipe ends

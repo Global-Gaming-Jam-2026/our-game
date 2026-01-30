@@ -6970,6 +6970,7 @@ MonoBehaviour:
   - {fileID: 2043112814}
   - {fileID: 1528359719}
   _playerDamageCollider: {fileID: 136346728}
+  _chargeDuration: 1
 --- !u!1 &329874459
 GameObject:
   m_ObjectHideFlags: 0
@@ -23426,8 +23427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _masks:
-  - {fileID: 89971289}
   - {fileID: 773020611}
+  - {fileID: 89971289}
   _bossCollider: {fileID: 329874462}
 --- !u!1 &737608704
 GameObject:
@@ -23650,7 +23651,7 @@ MonoBehaviour:
   - {fileID: 2024281069}
   - {fileID: 1850380165}
   _projectileParent: {fileID: 782730075}
-  _projectileInterval: 0.5
+  _projectileInterval: 0.76
 --- !u!1 &773020611
 GameObject:
   m_ObjectHideFlags: 0
@@ -29875,8 +29876,9 @@ MonoBehaviour:
   - {fileID: 2115582187}
   _roarIndicator: {fileID: 1375764996}
   _roarCollider: {fileID: 253012296}
-  _roarChargeUpTime: 1.5
-  _roarDuration: 1.75
+  _indicatorAppearDelay: 1
+  _roarChargeUpTime: 1.1
+  _roarDuration: 1.6
 --- !u!1 &1017446087
 GameObject:
   m_ObjectHideFlags: 0

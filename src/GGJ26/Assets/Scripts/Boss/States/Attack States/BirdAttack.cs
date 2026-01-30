@@ -55,7 +55,7 @@ public class BirdAttack : StateBase
                     GamePhysics.InitialVelocityFromTarget(
                         Controller.Body.transform.position, 
                         PlayerController.Instance.transform.position + 0.5f * Vector3.up, 
-                        1f, 
+                        0.5f, 
                         Physics2D.gravity);
             }
             _shootTime = Time.time;

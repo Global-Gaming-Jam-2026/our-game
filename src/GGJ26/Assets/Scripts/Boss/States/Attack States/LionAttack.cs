@@ -7,7 +7,14 @@ public class LionAttack : StateBase
     [SerializeField] GameObject[] _roarPositions;
     [SerializeField] GameObject _roarIndicator;
     [SerializeField] Collider2D _roarCollider;
+
+    [Tooltip("The time between the head arriving at its location and the red indicator appearing")]
+    [SerializeField] float _indicatorAppearDelay;
+
+    [Tooltip("How long the reed indicator stays")]
     [SerializeField] float _roarChargeUpTime;
+
+    [Tooltip("How long the AOE lasts")]
     [SerializeField] float _roarDuration;
 
     Sequence _moveToRoarPosition;
@@ -39,7 +46,8 @@ public class LionAttack : StateBase
                     _roarIndicator.SetActive(false);
                     _roarCollider.transform.position = Controller.Body.transform.position;
                     _roarCollider.gameObject.SetActive(true);
-                }))
+                })
+                .SetDelay(_indicatorAppearDelay))
             .Append(Controller.Body.DOMove(position, 1.5f).SetEase(Ease.InOutExpo).SetDelay(_roarDuration)
                 .OnStart(() => _roarCollider.gameObject.SetActive(false))
                 .OnComplete(() => _isDone = true));
