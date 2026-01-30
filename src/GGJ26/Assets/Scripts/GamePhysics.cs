@@ -12,4 +12,9 @@ public static class GamePhysics
     {
         return ((layerMask.value & (1 << obj.layer)) > 0);
     }
+
+    public static Vector2 InitialVelocityFromTarget(Vector2 startPos, Vector2 endPos, float time, Vector2 acceleration)
+    {
+        return (2 * endPos - 2 * startPos - acceleration * time * time) / (2 * time);
+    }
 }
