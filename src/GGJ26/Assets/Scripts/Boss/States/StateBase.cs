@@ -3,7 +3,7 @@ using UnityEngine;
 public class StateBase : MonoBehaviour
 {
     protected StateBase _subState;
-    protected BossController Controller;
+    protected Entity Controller;
     protected bool _isDone;
     protected float _startTime;
 
@@ -11,7 +11,7 @@ public class StateBase : MonoBehaviour
 
     public bool IsDone => _isDone;
 
-    public void SetController(BossController controller)
+    public void SetController(Entity controller)
     {
         Controller = controller;
     }

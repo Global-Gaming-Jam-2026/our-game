@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    BossController _controller;
+    Entity _controller;
     StateBase _currentState;
 
     public StateBase State => _currentState;
 
-    public void SetController(BossController controller)
+    public void SetController(Entity controller)
     {
         _controller = controller;
         InitAllStates();

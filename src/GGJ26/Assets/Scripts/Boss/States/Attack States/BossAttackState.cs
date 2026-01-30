@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AttackState : StateBase
+public class BossAttackState : StateBase
 {
     List<StateBase> _attackStates;
     int[] _attackWeights;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Entity
 {
     //################### SINGLETON ###################
     public static PlayerController Instance;
@@ -11,15 +11,12 @@ public class PlayerController : MonoBehaviour
     }
     //################### END SINGLETON ###############
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Header("States")]
+    [SerializeField] StateBase _idleState;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //private void Start()
+    //{
+    //    InitMachine();
+    //    _machine.SetState(_idleState);
+    //}
 }

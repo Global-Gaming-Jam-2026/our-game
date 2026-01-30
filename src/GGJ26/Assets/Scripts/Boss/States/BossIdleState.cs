@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IdleState : StateBase
+public class BossIdleState : StateBase
 {
     [SerializeField]
     [Min(1.0f)] float _minIdleTime;

@@ -1,23 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class BossController : MonoBehaviour
+public class BossController : Entity
 {
-    StateMachine _machine;
-
-    [SerializeField] Rigidbody2D _body;
+    
 
     [Header("States")]
-    [SerializeField] IdleState _idleState;
-    [SerializeField] AttackState _attackState;
-
-    public Rigidbody2D Body => _body;
+    [SerializeField] BossIdleState _idleState;
+    [SerializeField] BossAttackState _attackState;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _machine = GetComponentInChildren<StateMachine>();
-        _machine.SetController(this);
+        InitMachine();
         _machine.SetState(_idleState, true);
     }
 
