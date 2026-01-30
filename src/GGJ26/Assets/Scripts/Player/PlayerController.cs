@@ -37,6 +37,7 @@ public class PlayerController : Entity
     [SerializeField] PlayerJumpState _jumpState;
     [SerializeField] PlayerFallState _fallState;
     [SerializeField] PlayerWhipState _whipState;
+    [SerializeField] PlayerDeathState _deathState;
 
     Collider2D _groundCollider;
 
@@ -48,6 +49,8 @@ public class PlayerController : Entity
         InitAnimator();
         InitMachine();
         _machine.SetState(_idleState);
+
+        EventBus.Instance.OnPlayerDeath += Die;
     }
 
     bool CastForGrounded()
@@ -114,5 +117,10 @@ public class PlayerController : Entity
         {
             _machine.SetState(_fallState);
         }
+    }
+
+    void Die()
+    {
+        _machine.SetState(_deathState, true);
     }
 }
