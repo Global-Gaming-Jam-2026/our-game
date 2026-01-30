@@ -45,7 +45,7 @@ public class SlamAttack : StateBase
 
     private void OnEnable()
     {
-        GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 9);
+        GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 9, Mask.Bear);
     }
 
     public override void OnStateExit()

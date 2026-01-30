@@ -17,6 +17,6 @@ public class HumanAttack : StateBase
 
     private void OnEnable()
     {
-        GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 7);
+        GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 7, Mask.Human);
     }
 }

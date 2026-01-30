@@ -65,6 +65,6 @@ public class LionAttack : StateBase
 
     private void OnEnable()
     {
-        GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 5);
+        GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 5, Mask.Lion);
     }
 }
