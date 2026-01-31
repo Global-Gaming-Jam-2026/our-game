@@ -364,15 +364,6 @@ Built during the 48 hour jam. The theme was masks. We made a boss that literally
 
 ---
 
-## Links
-
-| Resource | Description |
-|----------|-------------|
-| [Game Jam Agent](https://github.com/Global-Gaming-Jam-2026/game-jam-agent) | AI dev tools we built |
-| [Skills Library](https://github.com/Global-Gaming-Jam-2026/game-dev-skills) | Game dev knowledge base |
-
----
-
 ## License
 
 MIT. Take the code. Use it. Modify it. Ship it. Credit is appreciated but not required.
