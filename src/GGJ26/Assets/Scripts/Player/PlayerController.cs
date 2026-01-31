@@ -41,10 +41,13 @@ public class PlayerController : Entity
     [SerializeField] PlayerWhipState _whipState;
     [SerializeField] PlayerDeathState _deathState;
 
+    bool _isGrounded;
     Collider2D _groundCollider;
 
     public PlayerInputActions InputActions => _actions;
     public float RunSpeed => _runSpeed;
+
+    public bool IsGrounded => _isGrounded;
 
     private void Start()
     {
@@ -98,8 +101,8 @@ public class PlayerController : Entity
         {
             _machine.SetState(_whipState, true);
         }
-        bool isGrounded = CastForGrounded();
-        if (isGrounded)
+        _isGrounded = CastForGrounded();
+        if (_isGrounded)
         {
             if (IsMoving(out float xInput))
             {
