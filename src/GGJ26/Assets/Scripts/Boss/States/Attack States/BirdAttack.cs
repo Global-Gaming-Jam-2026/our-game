@@ -18,10 +18,10 @@ public class BirdAttack : StateBase
     {
         Debug.Log("Starting bird attack");
         base.OnStateEnter();
-        _localCooldownMultiplier = Mathf.Max(CooldownHolder.GlobalCooldownMultiplier, 0.8f);
+        _localCooldownMultiplier = Mathf.Max(CooldownHolder.GlobalCooldownMultiplier, 0.6f);
         _startTargetPosition = ChooseRandomTargetPosition();
         _startPosition = Controller.Body.position;
-        _shootTime = Time.time - _projectileInterval * CooldownHolder.GlobalCooldownMultiplier / 2f;
+        _shootTime = Time.time - _projectileInterval * _localCooldownMultiplier / 2f;
     }
 
     private Vector2 ChooseRandomTargetPosition()
@@ -46,7 +46,7 @@ public class BirdAttack : StateBase
 
     private void SpawnProjectiles()
     {
-        if (Time.time >= _shootTime + _projectileInterval * CooldownHolder.GlobalCooldownMultiplier)
+        if (Time.time >= _shootTime + _projectileInterval * _localCooldownMultiplier)
         {
             DamageCollider nextProj = _projectileParent.GetNextProjectile();
             if (nextProj != null)

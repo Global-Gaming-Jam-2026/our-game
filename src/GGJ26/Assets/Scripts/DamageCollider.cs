@@ -8,21 +8,24 @@ public class DamageCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GamePhysics.IsInLayerMask(collision.gameObject, _collidingLayers))
+        if (!GamePhysics.IsInLayerMask(collision.gameObject, _collidingLayers))
+            return;
+        gameObject.SetActive(!_disappearsWhenHit);
+
+        if (collision.gameObject.name != "Player" && collision.gameObject.name != "Body")
+            return;
+
+        HealthModule health;
+        if (collision.gameObject.TryGetComponent(out health))
         {
-            gameObject.SetActive(!_disappearsWhenHit);
-            HealthModule health;
-            if (collision.gameObject.TryGetComponent(out health))
+            health.TakeDamage(_damageDealt);
+        }
+        else
+        {
+            health = collision.gameObject.GetComponentInParent<HealthModule>();
+            if (health != null)
             {
                 health.TakeDamage(_damageDealt);
-            }
-            else
-            {
-                health = collision.gameObject.GetComponentInParent<HealthModule>();
-                if (health != null)
-                {
-                    health.TakeDamage(_damageDealt);
-                }
             }
         }
     }
