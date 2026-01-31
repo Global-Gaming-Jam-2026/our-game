@@ -338,15 +338,7 @@ src/GGJ26/Assets/
 ║  [BUG] TRACKER                                      v0.1-jam     ║
 ╠══════════════════════════════════════════════════════════════════╣
 ║                                                                  ║
-║  #001 [COSMETIC] Whip sprite missing                             ║
-║       └── Status: WON'T FIX (jam deadline)                       ║
-║       └── Impact: Damage works, animation invisible              ║
-║                                                                  ║
-║  #002 [COSMETIC] Particle textures missing                       ║
-║       └── Status: LOW PRIORITY                                   ║
-║       └── Impact: Particles render as squares                    ║
-║                                                                  ║
-║  Total: 2 issues │ Critical: 0 │ Cosmetic: 2                     ║
+║   None Known                                                     ║
 ║                                                                  ║
 ╚══════════════════════════════════════════════════════════════════╝
 ```
