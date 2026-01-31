@@ -3,7 +3,7 @@ using UnityEngine;
 public class SpriteFrontDisplay : MonoBehaviour
 {
     SpriteRenderer _renderer;
-     ParticleSystem[] _eyeFireSystems;
+    ParticleSystem[] _eyeFireSystems;
 
     private void Start()
     {

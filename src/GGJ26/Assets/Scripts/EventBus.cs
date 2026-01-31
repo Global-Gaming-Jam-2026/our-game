@@ -14,4 +14,6 @@ public class EventBus : MonoBehaviour
     public Action<float> OnBossHealthChange;
     public Action OnBossDefeat;
     public Action OnPlayerDeath;
+    public Action OnCameraFlipStart;
+    public Action OnCameraFlipEnd;
 }

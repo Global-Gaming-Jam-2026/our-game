@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BossController : Entity
 {
+    [SerializeField] Collider2D _bossCollider;
+
     [Header("States")]
     [SerializeField] BossIdleState _idleState;
     [SerializeField] BossAttackState _attackState;
@@ -16,6 +18,7 @@ public class BossController : Entity
         _machine.SetState(_idleState, true);
 
         EventBus.Instance.OnBossDefeat += Die;
+        EventBus.Instance.OnCameraFlipEnd += ReenablBoss;
     }
 
     private void Update()
@@ -42,5 +45,27 @@ public class BossController : Entity
         {
             _machine.SetState(_idleState);
         }
+    }
+
+    public void TriggerScreenFlip()
+    {
+        StartCoroutine(ScreenFlipSequence());
+    }
+
+    IEnumerator ScreenFlipSequence()
+    {
+        while (_machine.State != _idleState)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        _isOperating = false;
+        EventBus.Instance.OnCameraFlipStart?.Invoke();
+    }
+
+    void ReenablBoss()
+    {
+        _isOperating = true;
+        _bossCollider.enabled = true;
     }
 }

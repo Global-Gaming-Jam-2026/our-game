@@ -69,7 +69,7 @@ public class MaskRotator : MonoBehaviour
         int desiredAngle = _rotations[_masks.Count - 2][index];
 
         Sequence rotateSequence = DOTween.Sequence();
-        rotateSequence.Append(transform.DORotate(desiredAngle * Vector3.up, 0.35f))
+        rotateSequence.Append(transform.DOLocalRotate(desiredAngle * Vector3.up, 0.35f))
             .OnComplete(() => _rotating = false);
     }
 }
