@@ -7,8 +7,13 @@
  ╚══▀▀═╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝    ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚══════╝   ╚═╝
 ```
 
+<p align="center">
+  <img src="quack frenzy logo.jpg" alt="Quack Frenzy Logo" width="400"/>
+</p>
+
 ### A Duck Jones Adventure
 
+[![Google Drive](https://img.shields.io/badge/Google%20Drive-Assets%20%26%20Builds-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/drive/folders/1rcfgGKRygYEYGfuoGBHbOPeNGXTZpY1r?usp=drive_link)
 ![Unity](https://img.shields.io/badge/Unity-6000.0.62f1-000000?style=for-the-badge&logo=unity&logoColor=white)
 ![CSharp](https://img.shields.io/badge/C%23-10.0-239120?style=for-the-badge&logo=csharp&logoColor=white)
 ![Global Game Jam](https://img.shields.io/badge/Global%20Game%20Jam-2026-E4405F?style=for-the-badge)
@@ -285,13 +290,27 @@ src/GGJ26/Assets/
 
 ## Tech Stack
 
-| Package | Version | What It Does |
-|---------|---------|--------------|
-| Unity | 6000.0.62f1 | The engine |
-| DOTween | Latest | Smooth tweening and animation |
-| Input System | 1.14.2 | Keyboard and gamepad support |
-| URP | 17.0.4 | Universal Render Pipeline |
-| TextMeshPro | Built-in | UI text rendering |
+```
+╔════════════════════════════════════════════════════════════════════╗
+║  [>] LOADED PACKAGES                                               ║
+╠════════════════════════════════════════════════════════════════════╣
+║                                                                    ║
+║  PACKAGE          VERSION        ROLE                              ║
+║  ─────────────────────────────────────────────────────────────     ║
+║  Unity            6000.0.62f1    The engine                        ║
+║  DOTween          Latest         Smooth tweening and animation     ║
+║  Input System     1.14.2         Keyboard and gamepad support      ║
+║  URP              17.0.4         Universal Render Pipeline         ║
+║  TextMeshPro      Built-in       UI text rendering                 ║
+║                                                                    ║
+╚════════════════════════════════════════════════════════════════════╝
+```
+
+![Unity](https://img.shields.io/badge/Unity-6000.0.62f1-000000?style=for-the-badge&logo=unity&logoColor=white)
+![DOTween](https://img.shields.io/badge/DOTween-Latest-FF6F00?style=for-the-badge)
+![Input System](https://img.shields.io/badge/Input%20System-1.14.2-000000?style=for-the-badge&logo=unity&logoColor=white)
+![URP](https://img.shields.io/badge/URP-17.0.4-000000?style=for-the-badge&logo=unity&logoColor=white)
+![TMP](https://img.shields.io/badge/TextMeshPro-Built--in-000000?style=for-the-badge&logo=unity&logoColor=white)
 
 ---
 
@@ -336,11 +355,12 @@ src/GGJ26/Assets/
 Built during the 48 hour jam. The theme was masks. We made a boss that literally changes masks. Sometimes the obvious approach is the right one.
 
 ### Team Tools
-- Unity 6000.0.62f1
-- DOTween by Demigiant
-- Visual Studio
-- Rider
-- Coffee
+
+![Unity](https://img.shields.io/badge/Unity-6000.0.62f1-000000?style=for-the-badge&logo=unity&logoColor=white)
+![DOTween](https://img.shields.io/badge/DOTween-Demigiant-FF6F00?style=for-the-badge)
+![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2022-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white)
+![Rider](https://img.shields.io/badge/Rider-2024.3-000000?style=for-the-badge&logo=rider&logoColor=white)
+![Coffee](https://img.shields.io/badge/Coffee-Mass%20Amounts-6F4E37?style=for-the-badge&logo=buymeacoffee&logoColor=white)
 
 ---
 
