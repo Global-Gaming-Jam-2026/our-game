@@ -20,7 +20,7 @@ public class HealthModule : MonoBehaviour
     [Space]
 
     [SerializeField] List<PercentageToCallback> _hpEvents;
-
+    [SerializeField] SpriteRenderer _sprite;
     Entity _attachedEntity;
     int _currentHP;
     bool _isInIframes;
@@ -62,6 +62,7 @@ public class HealthModule : MonoBehaviour
             else if (_attachedEntity is PlayerController)
             {
                 (_attachedEntity as PlayerController).PlayDamageSFX();
+                _sprite.DOFade(0.5f, 0.05f).SetLoops(40, LoopType.Yoyo);
             }
         }
     }

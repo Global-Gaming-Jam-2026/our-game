@@ -8105,6 +8105,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  _sprite: {fileID: 0}
 --- !u!95 &337601687
 Animator:
   serializedVersion: 7
@@ -24945,6 +24946,7 @@ MonoBehaviour:
   _startHP: 50
   _iframeLength: 2
   _hpEvents: []
+  _sprite: {fileID: 1017446089}
 --- !u!95 &888833238
 Animator:
   serializedVersion: 7
@@ -31382,7 +31384,7 @@ SpriteRenderer:
   m_Size: {x: 4.5866666, y: 3.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1101301538
@@ -49960,7 +49962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1747289190
 Transform:
   m_ObjectHideFlags: 0
