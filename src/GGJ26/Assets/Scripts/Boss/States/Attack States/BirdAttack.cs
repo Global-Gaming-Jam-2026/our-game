@@ -12,11 +12,13 @@ public class BirdAttack : StateBase
 
     Vector2 _startTargetPosition, _startPosition;
     float _shootTime;
+    float _localCooldownMultiplier;
 
     public override void OnStateEnter()
     {
         Debug.Log("Starting bird attack");
         base.OnStateEnter();
+        _localCooldownMultiplier = Mathf.Max(CooldownHolder.GlobalCooldownMultiplier, 0.8f);
         _startTargetPosition = ChooseRandomTargetPosition();
         _startPosition = Controller.Body.position;
         _shootTime = Time.time - _projectileInterval * CooldownHolder.GlobalCooldownMultiplier / 2f;
@@ -44,7 +46,7 @@ public class BirdAttack : StateBase
 
     private void SpawnProjectiles()
     {
-        if (Time.time >= _shootTime + _projectileInterval)
+        if (Time.time >= _shootTime + _projectileInterval * CooldownHolder.GlobalCooldownMultiplier)
         {
             DamageCollider nextProj = _projectileParent.GetNextProjectile();
             if (nextProj != null)
@@ -65,8 +67,8 @@ public class BirdAttack : StateBase
     private void AnimateEightFigure()
     {
         Vector2 position = new Vector2();
-        position.x = Mathf.Sin(StateTime) * _startTargetPosition.x;
-        position.y = _startPosition.y + Mathf.Sin(StateTime * 2f);
+        position.x = Mathf.Sin(StateTime / _localCooldownMultiplier) * _startTargetPosition.x;
+        position.y = _startPosition.y + Mathf.Sin(StateTime * 2f / _localCooldownMultiplier);
         Controller.Body.position = position;
     }
 
