@@ -29,6 +29,7 @@ public class PlayerDeathState : StateBase
 
         deathSequence.OnComplete(() =>
         {
+            Controller.gameObject.SetActive(false);
             SceneManager.LoadScene(_gameOverSceneName);
         });
     }
