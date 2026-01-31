@@ -4,11 +4,13 @@ public class HumanAttack : StateBase
 {
     [SerializeField] SpearParent _spearParent;
     [SerializeField] AudioClip _attackSFX;
+    [SerializeField] [Min(1.0f)] float _spearDistance;
+
     public override void OnStateEnter()
     {
         base.OnStateEnter();
         Controller.SFXPlayer.PlaySFX(_attackSFX);
-        _spearParent.SpawnSpears(5);
+        _spearParent.SpawnSpears(5, _spearDistance);
     }
 
     public override void OnStateUpdate()

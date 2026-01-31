@@ -13,13 +13,13 @@ public class SpearParent : MonoBehaviour
         _spears = GetComponentsInChildren<Spear>(true);
     }
 
-    public void SpawnSpears(int amount)
+    public void SpawnSpears(int amount, float distance)
     {
         _launchedSpears = false;
         float angleInterval = 180f / (amount - 1);
         for (int i = 0; i < amount; i++)
         {
-            Vector2 spawnPosition = Quaternion.Euler(Vector3.forward * angleInterval * i) * Vector2.right * 5.5f;
+            Vector2 spawnPosition = Quaternion.Euler(Vector3.forward * angleInterval * i) * Vector2.right * distance;
             Quaternion spawnRotation = Quaternion.Euler(Vector3.forward * angleInterval * i);
             Spear nextSpear = GetNextSpear();
             nextSpear.transform.SetLocalPositionAndRotation(spawnPosition, spawnRotation);
