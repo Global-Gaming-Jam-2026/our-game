@@ -82,7 +82,7 @@ public class HealthModule : MonoBehaviour
 
     void ActivatePercentageBasedEffect(float percentage)
     {
-        PercentageToCallback effect = _hpEvents.FirstOrDefault(e => e.Percentage / 100f >= percentage);
+        PercentageToCallback effect = _hpEvents.FirstOrDefault(e => percentage * 100 <= e.Percentage);
         if (effect != null)
         {
             effect.Callback.Invoke();
