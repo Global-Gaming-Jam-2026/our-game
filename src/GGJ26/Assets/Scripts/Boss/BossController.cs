@@ -33,6 +33,7 @@ public class BossController : Entity
     {
         _machine.SetState(_deathState, true);
         _isOperating = false;
+        Destroy(_machine.gameObject);
     }
 
     void SelectState()

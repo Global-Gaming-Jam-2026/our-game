@@ -4,6 +4,7 @@ public class PlayerRunState : StateBase
 {
     [SerializeField] AudioClip[] _stepSFXLibrary;
     [SerializeField] float _stepSFXInterval;
+    [SerializeField] AnimationClip _walkAnimation;
 
     float _stepIntervalCountdown;
     int _currentStepIndex;
@@ -11,8 +12,8 @@ public class PlayerRunState : StateBase
     public override void OnStateEnter()
     {
         base.OnStateEnter();
-        Controller.Animator.SetBool("IsRunning", true);
         _stepIntervalCountdown = 0;
+        Controller.Animator.Play(_walkAnimation.name);
         _isDone = true;
     }
 
