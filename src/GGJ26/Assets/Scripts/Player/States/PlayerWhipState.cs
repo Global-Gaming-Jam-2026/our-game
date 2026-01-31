@@ -11,11 +11,23 @@ public class PlayerWhipState : StateBase
     public override void OnStateEnter()
     {
         base.OnStateEnter();
-        float upInput = PlayerController.Instance.InputActions.Player.Move.ReadValue<Vector2>().y;
-        _clipToPlay = upInput > 0 ? _upWhipAnimation : _sideWhipAnimation;
-        Debug.Log(_clipToPlay.name);
+
+        _clipToPlay = DetermineDirection();
         Controller.Animator.Play(_clipToPlay.name);
         Controller.SFXPlayer.PlaySFX(_whipSFX);
+    }
+
+    AnimationClip DetermineDirection()
+    {
+        Vector2 mousePosScreen = PlayerController.Instance.InputActions.Player.MousePosition.ReadValue<Vector2>();
+        Vector2 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePosScreen);
+        Vector2 directionToMouse = (mousePosWorld - (Vector2)Controller.Body.transform.position).normalized;
+
+        if (Mathf.Abs(Vector2.Angle(Vector2.up, directionToMouse)) < 30)
+        {
+            return _upWhipAnimation;
+        }
+        return _sideWhipAnimation;
     }
 
     public override void OnStateFixedUpdate()
