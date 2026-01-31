@@ -8,7 +8,7 @@
 ```
 
 <p align="center">
-  <img src="quack frenzy logo.jpg" alt="Quack Frenzy Logo" width="400"/>
+  <img src="src/GGJ26/Assets/Sprites/UI/QuackFrenzyLogo.jpg" alt="Quack Frenzy Logo" width="400"/>
 </p>
 
 ### A Duck Jones Adventure
