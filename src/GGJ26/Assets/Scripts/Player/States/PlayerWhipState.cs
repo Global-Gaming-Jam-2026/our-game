@@ -5,6 +5,7 @@ public class PlayerWhipState : StateBase
     [SerializeField] AnimationClip _sideWhipAnimation;
     [SerializeField] AnimationClip _upWhipAnimation;
     [SerializeField] AudioClip _whipSFX;
+    [SerializeField] float _fallMultiplier;
 
     AnimationClip _clipToPlay;
 
@@ -27,6 +28,9 @@ public class PlayerWhipState : StateBase
         {
             return _upWhipAnimation;
         }
+
+        float rotationAngle = Mathf.Sign(directionToMouse.x) > 0 ? 0f : 180f;
+        Controller.transform.rotation = Quaternion.Euler(rotationAngle * Vector3.up);
         return _sideWhipAnimation;
     }
 
@@ -36,8 +40,16 @@ public class PlayerWhipState : StateBase
         if (player != null)
         {
             float xInput = player.InputActions.Player.Move.ReadValue<Vector2>().x;
-            Vector2 desiredVel = xInput * player.RunSpeed * Vector2.right;
-            player.Body.linearVelocity = Vector2.Lerp(player.Body.linearVelocity, desiredVel, 10 * Time.deltaTime);
+            float desiredX = xInput * player.RunSpeed;
+            Vector2 vel = player.Body.linearVelocity;
+            vel.x = Mathf.Lerp(vel.x, desiredX, 10 * Time.deltaTime);
+
+            if (!player.IsGrounded)
+            {
+                vel.y += Physics2D.gravity.y * (_fallMultiplier - 1) * Time.fixedDeltaTime; 
+            }
+
+            player.Body.linearVelocity = vel;
         }
     }
 

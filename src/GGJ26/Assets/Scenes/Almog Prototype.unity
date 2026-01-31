@@ -17997,6 +17997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSprite: {fileID: 1017446089}
   _deathSFX: {fileID: 8300000, guid: 0de26aa126130964eb5bd35b98566da3, type: 3}
+  _gameOverSceneName: GameOver
 --- !u!4 &405405646
 Transform:
   m_ObjectHideFlags: 0
@@ -48868,6 +48869,7 @@ MonoBehaviour:
   _sideWhipAnimation: {fileID: 7400000, guid: 161bc9c577966c14999eeafb723242b4, type: 2}
   _upWhipAnimation: {fileID: 7400000, guid: a004b19ac84413e4683c265ac962eeaa, type: 2}
   _whipSFX: {fileID: 8300000, guid: ca7aac3a272308a4280ada8e4b4cfbd3, type: 3}
+  _fallMultiplier: 4.5
 --- !u!1 &1754586668
 GameObject:
   m_ObjectHideFlags: 0
