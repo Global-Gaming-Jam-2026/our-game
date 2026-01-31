@@ -76,7 +76,7 @@ public class HealthModule : MonoBehaviour
         {
             EventBus.Instance.OnPlayerDeath?.Invoke();
         }
-        enabled = false;
+        Destroy(this);
     }
 
     void ActivatePercentageBasedEffect(float percentage)
