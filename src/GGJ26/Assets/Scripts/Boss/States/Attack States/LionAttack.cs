@@ -38,12 +38,15 @@ public class LionAttack : StateBase
         _moveToRoarPosition = DOTween.Sequence();
         _moveToRoarPosition
             .Append(Controller.Body.DOMove(_chosenRoarPosition, 1f * CooldownHolder.GlobalCooldownMultiplier).SetEase(Ease.InOutExpo))
-            .Append(Controller.Body.transform.DOShakePosition(_roarChargeUpTime * CooldownHolder.GlobalCooldownMultiplier, 0.4f, 60)
+            .Append(Controller.Body.transform.DOShakePosition((_roarChargeUpTime + _indicatorAppearDelay) * CooldownHolder.GlobalCooldownMultiplier, 0.4f, 60)
                 .OnStart(() =>
                 {
-                    Controller.SFXPlayer.PlaySFX(_indicatorSFX);
-                    _roarIndicator.transform.position = Controller.Body.transform.position;
-                    _roarIndicator.gameObject.SetActive(true);
+                    DOVirtual.DelayedCall(_indicatorAppearDelay * CooldownHolder.GlobalCooldownMultiplier, () =>
+                    {
+                        Controller.SFXPlayer.PlaySFX(_indicatorSFX);
+                        _roarIndicator.transform.position = Controller.Body.transform.position;
+                        _roarIndicator.gameObject.SetActive(true);
+                    });
                 })
                 .OnComplete(() =>
                 {
@@ -51,8 +54,7 @@ public class LionAttack : StateBase
                     _roarIndicator.SetActive(false);
                     _roarCollider.transform.position = Controller.Body.transform.position;
                     _roarCollider.gameObject.SetActive(true);
-                })
-                .SetDelay(_indicatorAppearDelay * CooldownHolder.GlobalCooldownMultiplier))
+                }))
             .Append(Controller.Body.DOMove(position, 1.5f * CooldownHolder.GlobalCooldownMultiplier).SetEase(Ease.InOutExpo).SetDelay(_roarDuration)
                 .OnStart(() => _roarCollider.gameObject.SetActive(false))
                 .OnComplete(() => _isDone = true));
