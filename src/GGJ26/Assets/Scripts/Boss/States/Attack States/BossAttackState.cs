@@ -126,4 +126,9 @@ public class BossAttackState : StateBase
         _queueNewMask = false;
         StartCoroutine(ChooseRandomAttack());
     }
+
+    public override void OnStateExit()
+    {
+        _subState?.OnStateExit();
+    }
 }

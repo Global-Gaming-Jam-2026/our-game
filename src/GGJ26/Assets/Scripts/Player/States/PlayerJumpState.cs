@@ -4,6 +4,7 @@ public class PlayerJumpState : StateBase
 {
     [SerializeField][Min(1.0f)] float _jumpForce;
     [SerializeField][Min(1.0f)] float _lowJumpMultiplier;
+    [SerializeField] AudioClip _jumpSFXClip;
 
     public override void OnStateEnter()
     {
@@ -12,6 +13,7 @@ public class PlayerJumpState : StateBase
         Vector2 vel = Controller.Body.linearVelocity;
         vel.y = _jumpForce;
         Controller.Body.linearVelocity = vel;
+        Controller.SFXPlayer.PlaySFX(_jumpSFXClip);
     }
 
     public override void OnStateFixedUpdate()

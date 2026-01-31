@@ -5,6 +5,7 @@ public class TelegraphPhase : StateBase
 {
     [SerializeField] private float riseHeight = 3f;
     [SerializeField] private float telegraphDuration = 1.2f;
+    [SerializeField] AudioClip[] _bearRoarLibrary;
 
     [Header("Visual")]
     [SerializeField] private GameObject _shadowIndicator;
@@ -17,6 +18,7 @@ public class TelegraphPhase : StateBase
     {
         base.OnStateEnter();
         _originalPosition = Controller.Body.transform.position;
+        Controller.SFXPlayer.PlaySFX(_bearRoarLibrary[Random.Range(0, _bearRoarLibrary.Length)]);
         SetupShadow();
         Animate();
     }

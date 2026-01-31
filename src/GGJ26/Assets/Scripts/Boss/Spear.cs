@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Spear : MonoBehaviour
 {
+    [SerializeField] AudioClip _shootingSFX;
+
     Transform _originalParent;
     Rigidbody2D _body;
     Vector3 _speed;
@@ -13,7 +15,7 @@ public class Spear : MonoBehaviour
     {
         _originalParent = transform.parent;
         float zAngle = transform.eulerAngles.z;
-        transform.DORotate((zAngle + 360) * Vector3.forward, 0.5f, RotateMode.FastBeyond360);
+        transform.DOLocalRotate((zAngle + 360) * Vector3.forward, 0.5f, RotateMode.FastBeyond360);
     }
 
     public void LaunchDelayed(int index)
@@ -30,6 +32,7 @@ public class Spear : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
         transform.SetParent(null);
         DOTween.To(() => _speed, x => _speed = x, -transform.right * 12.5f, 0.5f).OnComplete(() => _body.linearVelocity = _speed);
+        GetComponent<SFXPlayer>().PlaySFX(_shootingSFX);
     }
 
     private void OnBecameInvisible()

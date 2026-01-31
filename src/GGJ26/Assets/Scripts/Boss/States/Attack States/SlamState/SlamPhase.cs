@@ -1,5 +1,4 @@
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
 
 public class SlamPhase : StateBase
@@ -7,6 +6,7 @@ public class SlamPhase : StateBase
     [Header("Slam Settings")]
     [SerializeField] private float slamSpeed = 0.35f;
     [SerializeField] private float returnSpeed = 0.8f;
+    [SerializeField] AudioClip _impactSFX;
 
     [Header("Damage")]
     [SerializeField] private Collider2D _playerDamageCollider;
@@ -25,8 +25,13 @@ public class SlamPhase : StateBase
 
     private void AnimateSlam()
     {
-        Vector3 targetPosition = PlayerController.Instance.transform.position;
+        //we want to reach the ground (y position of -4) so we take the direction to the player and extrapolate to find the target position
+        Vector3 playerDirection = (PlayerController.Instance.transform.position - Controller.Body.transform.position).normalized;
+        float _neededDirectionMultiplier = (-4f - Controller.Body.transform.position.y) / playerDirection.y;
+        Vector3 targetPosition = Controller.Body.transform.position + _neededDirectionMultiplier * playerDirection;
+        
         _slamSequence = DOTween.Sequence();
+
 
         // Phase 3: Slam to player position
         _slamSequence
@@ -43,14 +48,17 @@ public class SlamPhase : StateBase
             .Append(Controller.Body.transform.DOMove(OriginalPosition, returnSpeed)
                 .SetEase(Ease.OutCubic))
             .OnComplete(() => _isDone = true);
+
+        _playerDamageCollider.gameObject.SetActive(true);
+        _slamSequence.Play();
     }
 
     private void OnSlamImpact()
     {
+        Controller.SFXPlayer.PlaySFX(_impactSFX);
         // Activate damage collider
         if (_playerDamageCollider != null)
         {
-            _playerDamageCollider.gameObject.SetActive(true);
             DOVirtual.DelayedCall(damageActiveDuration, () =>
                 _playerDamageCollider.gameObject.SetActive(false));
         }

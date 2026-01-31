@@ -4,6 +4,7 @@ public class PlayerWhipState : StateBase
 {
     [SerializeField] AnimationClip _sideWhipAnimation;
     [SerializeField] AnimationClip _upWhipAnimation;
+    [SerializeField] AudioClip _whipSFX;
 
     AnimationClip _clipToPlay;
 
@@ -14,6 +15,7 @@ public class PlayerWhipState : StateBase
         _clipToPlay = upInput > 0 ? _upWhipAnimation : _sideWhipAnimation;
         Debug.Log(_clipToPlay.name);
         Controller.Animator.Play(_clipToPlay.name);
+        Controller.SFXPlayer.PlaySFX(_whipSFX);
     }
 
     public override void OnStateFixedUpdate()
