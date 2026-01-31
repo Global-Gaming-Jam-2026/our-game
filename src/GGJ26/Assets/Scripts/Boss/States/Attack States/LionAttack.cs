@@ -8,6 +8,9 @@ public class LionAttack : StateBase
     [SerializeField] GameObject _roarIndicator;
     [SerializeField] Collider2D _roarCollider;
 
+    [SerializeField] AudioClip _indicatorSFX;
+    [SerializeField] AudioClip[] _roarLibrary;
+
     [Tooltip("The time between the head arriving at its location and the red indicator appearing")]
     [SerializeField] float _indicatorAppearDelay;
 
@@ -38,11 +41,13 @@ public class LionAttack : StateBase
             .Append(Controller.Body.transform.DOShakePosition(_roarChargeUpTime * CooldownHolder.GlobalCooldownMultiplier, 0.4f, 60)
                 .OnStart(() =>
                 {
+                    Controller.SFXPlayer.PlaySFX(_indicatorSFX);
                     _roarIndicator.transform.position = Controller.Body.transform.position;
                     _roarIndicator.gameObject.SetActive(true);
                 })
                 .OnComplete(() =>
                 {
+                    Controller.SFXPlayer.PlaySFX(_roarLibrary[Random.Range(0, _roarLibrary.Length)]);
                     _roarIndicator.SetActive(false);
                     _roarCollider.transform.position = Controller.Body.transform.position;
                     _roarCollider.gameObject.SetActive(true);

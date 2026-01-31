@@ -30,6 +30,8 @@ public class PlayerController : Entity
 
     [SerializeField] LayerMask _groundMask;
     [SerializeField] float _runSpeed;
+    [SerializeField] AudioClip _landClip;
+    [SerializeField] AudioClip _takeDamageClip;
 
     [Header("States")]
     [SerializeField] PlayerIdleState _idleState;
@@ -46,8 +48,7 @@ public class PlayerController : Entity
 
     private void Start()
     {
-        InitAnimator();
-        InitMachine();
+        InitComponents();
         _machine.SetState(_idleState);
 
         EventBus.Instance.OnPlayerDeath += Die;
@@ -106,6 +107,10 @@ public class PlayerController : Entity
             }
             else
             {
+                if (_machine.State == _fallState)
+                {
+                    _sfxPlayer.PlaySFX(_landClip);
+                }
                 _machine.SetState(_idleState);
             }
             if (_actions.Player.Jump.WasPressedThisFrame())
@@ -122,5 +127,10 @@ public class PlayerController : Entity
     void Die()
     {
         _machine.SetState(_deathState, true);
+    }
+
+    public void PlayDamageSFX()
+    {
+        _sfxPlayer.PlaySFX(_takeDamageClip);
     }
 }

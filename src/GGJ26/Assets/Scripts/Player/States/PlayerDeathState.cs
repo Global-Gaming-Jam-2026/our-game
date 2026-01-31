@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerDeathState : StateBase
 {
     [SerializeField] SpriteRenderer _playerSprite;
+    [SerializeField] AudioClip _deathSFX;
 
     float _spriteAlpha;
 
@@ -17,6 +18,8 @@ public class PlayerDeathState : StateBase
         }).OnComplete(() => Controller.gameObject.SetActive(false));
 
         Controller.Body.bodyType = RigidbodyType2D.Kinematic;
+
+        Controller.SFXPlayer.PlaySFX(_deathSFX);
     }
 
     public override void OnStateFixedUpdate()

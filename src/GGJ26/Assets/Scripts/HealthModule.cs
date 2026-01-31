@@ -55,6 +55,15 @@ public class HealthModule : MonoBehaviour
         {
             EndGame();
         }
+        else
+        {
+            if (_attachedEntity is BossController)
+                _attachedEntity.transform.DOShakePosition(0.2f, Vector2.right * 0.5f, 35);
+            else if (_attachedEntity is PlayerController)
+            {
+                (_attachedEntity as PlayerController).PlayDamageSFX();
+            }
+        }
     }
 
     private void EndGame()

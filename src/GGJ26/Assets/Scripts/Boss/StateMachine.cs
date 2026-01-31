@@ -24,7 +24,7 @@ public class StateMachine : MonoBehaviour
 
     public void SetState(StateBase newState, bool forceReset = false)
     {
-        if (_currentState == null || _currentState.IsDone || forceReset)
+        if ((_currentState == null || _currentState.IsDone || forceReset) && newState != _currentState)
         {
             _currentState?.OnStateExit();
             _currentState = newState;
