@@ -4,9 +4,6 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
 
-/// <summary>
-/// Main menu controller with Play and Quit functionality.
-/// </summary>
 public class MainMenuUI : MonoBehaviour
 {
     [Header("UI Elements")]

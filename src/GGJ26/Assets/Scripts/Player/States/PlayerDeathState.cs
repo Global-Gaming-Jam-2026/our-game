@@ -1,10 +1,12 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class PlayerDeathState : StateBase
 {
     [SerializeField] SpriteRenderer _playerSprite;
     [SerializeField] AudioClip _deathSFX;
+    [SerializeField] string _gameOverSceneName = "GameOver"; 
 
     float _spriteAlpha;
 
@@ -12,14 +14,23 @@ public class PlayerDeathState : StateBase
     {
         base.OnStateEnter();
 
-        DOTween.To(() => _spriteAlpha, x => _spriteAlpha = x, 1, 1.5f).OnUpdate(() =>
-        {
-            _playerSprite.material.SetFloat("_DissolveAmount", _spriteAlpha);
-        }).OnComplete(() => Controller.gameObject.SetActive(false));
-
         Controller.Body.bodyType = RigidbodyType2D.Kinematic;
-
         Controller.SFXPlayer.PlaySFX(_deathSFX);
+
+        Sequence deathSequence = DOTween.Sequence();
+
+        deathSequence.Append(DOTween.To(() => _spriteAlpha, x => _spriteAlpha = x, 1, 1.5f)
+            .OnUpdate(() =>
+            {
+                _playerSprite.material.SetFloat("_DissolveAmount", _spriteAlpha);
+            }));
+
+        deathSequence.AppendInterval(0.5f);
+
+        deathSequence.OnComplete(() =>
+        {
+            SceneManager.LoadScene(_gameOverSceneName);
+        });
     }
 
     public override void OnStateFixedUpdate()

@@ -2,30 +2,53 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private string gameOverSceneName = "GameOver"; 
+
     [Header("Win")]
     [SerializeField] private CanvasGroup winPanel;
-    [SerializeField] private TMP_Text winText;
 
     [Header("Lose")]
     [SerializeField] private CanvasGroup losePanel;
-    [SerializeField] private TMP_Text loseText;
-
-    [Header("Buttons")]
-    [SerializeField] private Button restartButton;
 
     private void Start()
     {
         if (winPanel != null) winPanel.gameObject.SetActive(false);
         if (losePanel != null) losePanel.gameObject.SetActive(false);
 
-        if (restartButton != null)
-            restartButton.onClick.AddListener(OnRestartClicked);
+        if (EventBus.Instance != null)
+        {
+            EventBus.Instance.OnPlayerDeath += HandlePlayerDeath;
+            EventBus.Instance.OnBossDefeat += HandleBossDefeat;
+        }
+    }
 
-        if (GameManager.Instance != null)
-            GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
+    private void HandlePlayerDeath()
+    {
+        SceneManager.LoadScene(gameOverSceneName);
+    }
+
+    private void HandleBossDefeat()
+    {
+        if (winPanel != null)
+        {
+            winPanel.gameObject.SetActive(true);
+            winPanel.alpha = 0;
+            winPanel.DOFade(1f, 0.5f);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (EventBus.Instance != null)
+        {
+            EventBus.Instance.OnPlayerDeath -= HandlePlayerDeath;
+            EventBus.Instance.OnBossDefeat -= HandleBossDefeat;
+        }
     }
 
     private void OnGameStateChanged(GameManager.GameState state)
@@ -61,9 +84,4 @@ public class GameOverUI : MonoBehaviour
         GameManager.Instance?.RestartGame();
     }
 
-    private void OnDestroy()
-    {
-        if (GameManager.Instance != null)
-            GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
-    }
 }
