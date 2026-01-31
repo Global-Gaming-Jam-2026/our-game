@@ -22,7 +22,7 @@ public class BirdAttack : StateBase
     {
         Debug.Log("Starting bird attack");
         base.OnStateEnter();
-        
+        _sfxCooldownCounter = 0f;
         _localCooldownMultiplier = Mathf.Max(CooldownHolder.GlobalCooldownMultiplier, 0.6f);
         _startTargetPosition = ChooseRandomTargetPosition();
         _startPosition = Controller.Body.position;
