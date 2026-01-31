@@ -9,6 +9,8 @@ public class BullAttack : StateBase
     [Tooltip("How long it takes the bull to charge across the screen. Smaller values are faster")]
     [SerializeField][Min(0.3f)]  float _chargeDuration;
 
+    [SerializeField] LineRenderer _attackRenderer;
+
     [SerializeField] AudioClip _attackSFX;
 
     Vector2 _chargeStartPos;
@@ -45,10 +47,17 @@ public class BullAttack : StateBase
         Vector2 startPosition = Controller.Body.transform.position;
         _attackSequence = DOTween.Sequence();
         _attackSequence
-            .Append(Controller.Body.DOMove(_chargeStartPos, 1.5f * CooldownHolder.GlobalCooldownMultiplier).SetEase(Ease.InOutSine)) // moving to start position
+            .Append(Controller.Body.DOMove(_chargeStartPos, 1.5f * CooldownHolder.GlobalCooldownMultiplier).SetEase(Ease.InOutSine) // moving to start position
+                .OnComplete(() =>
+                {
+                    Debug.Log("line");
+                    _attackRenderer.SetPositions(new Vector3[] { _chargeStartPos, _chargeEndPos });
+                    _attackRenderer.gameObject.SetActive(true);
+                }))
             .Append(Controller.Body.DOMove(_chargeEndPos, _chargeDuration * CooldownHolder.GlobalCooldownMultiplier).SetEase(Ease.InSine).SetDelay(0.5f) // swiping across the screen after delay of 0.75 seconds
                 .OnStart(() =>
                 {
+                    _attackRenderer.gameObject.SetActive(false);
                     _playerDamageCollider.gameObject.SetActive(true);
                     Controller.SFXPlayer.PlaySFX(_attackSFX);
                 }) // activating player damage collider when swipe starts

@@ -55,6 +55,8 @@ public class PlayerController : Entity
         _machine.SetState(_idleState);
 
         EventBus.Instance.OnPlayerDeath += Die;
+
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     bool CastForGrounded()
