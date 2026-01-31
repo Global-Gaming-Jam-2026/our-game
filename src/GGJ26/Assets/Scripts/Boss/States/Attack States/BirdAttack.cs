@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class BirdAttack : StateBase
 {
+    [SerializeField] AudioClip[] _birdScremLibrary;
+    [SerializeField] float _sfxCooldown;
+
     [Header("Animation")]
     [SerializeField] GameObject[] _positions;
 
@@ -13,11 +16,13 @@ public class BirdAttack : StateBase
     Vector2 _startTargetPosition, _startPosition;
     float _shootTime;
     float _localCooldownMultiplier;
+    float _sfxCooldownCounter;
 
     public override void OnStateEnter()
     {
         Debug.Log("Starting bird attack");
         base.OnStateEnter();
+        _sfxCooldownCounter = 0f;
         _localCooldownMultiplier = Mathf.Max(CooldownHolder.GlobalCooldownMultiplier, 0.6f);
         _startTargetPosition = ChooseRandomTargetPosition();
         _startPosition = Controller.Body.position;
@@ -33,6 +38,12 @@ public class BirdAttack : StateBase
     public override void OnStateUpdate()
     {
         base.OnStateUpdate();
+        HandleSFX();
+        AnimateBird();
+    }
+
+    private void AnimateBird()
+    {
         if (StateTime < 6f)
         {
             AnimateEightFigure();
@@ -41,6 +52,19 @@ public class BirdAttack : StateBase
         else
         {
             MoveBack();
+        }
+    }
+
+    private void HandleSFX()
+    {
+        if (!Controller.SFXPlayer.IsPlaying && _sfxCooldownCounter <= 0)
+        {
+            _sfxCooldownCounter = _sfxCooldown;
+            Controller.SFXPlayer.PlaySFX(_birdScremLibrary[Random.Range(0, _birdScremLibrary.Length)]);
+        }
+        else
+        {
+            _sfxCooldownCounter -= Time.deltaTime;
         }
     }
 
@@ -85,5 +109,11 @@ public class BirdAttack : StateBase
     private void OnEnable()
     {
         GetComponentInParent<BossAttackState>().RegisterNewAttack(this, 5, Mask.Bird);
+    }
+
+    public override void OnStateExit()
+    {
+        base.OnStateExit();
+        Controller.SFXPlayer.Stop();
     }
 }
