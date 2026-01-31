@@ -28,7 +28,7 @@ Built in 48 hours for Global Game Jam 2026. The theme was masks. We took it lite
 +===================================================================+
 |                                                                   |
 |  Boss Forms        [█████░░░░░░░░░░░░░░░]   5 masks               |
-|  Attack Patterns   [██████░░░░░░░░░░░░░░]   6 ways to die         |
+|  Attack Patterns   [█████░░░░░░░░░░░░░░░]   5 ways to die         |
 |  Player States     [██████░░░░░░░░░░░░░░]   6 states              |
 |  Duck Frames       [██████████████░░░░░░]  14 animation frames    |
 |  Dev Time          [████████████████████]  48 hours               |
@@ -40,63 +40,116 @@ Built in 48 hours for Global Game Jam 2026. The theme was masks. We took it lite
 
 ## Quick Start
 
-### What You Need
-- Unity 6000.0.62f1 or later
-- Git
-- Patience
-
-### How to Run
-```bash
-git clone https://github.com/Global-Gaming-Jam-2026/our-game.git
-cd our-game/src/GGJ26
 ```
-Open in Unity. Load `Scenes/Almog Prototype.unity`. Hit Play. Die a few times. Get better.
+╔══════════════════════════════════════════════════════════════════╗
+║  [!] QUEST: BEGIN YOUR ADVENTURE                                 ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║  REQUIREMENTS:                                                   ║
+║  ├── Unity 6000.0.62f1 or later                                  ║
+║  ├── Git                                                         ║
+║  └── Patience (you will need it)                                 ║
+║                                                                  ║
+║  OBJECTIVES:                                                     ║
+║  [ ] git clone https://github.com/Global-Gaming-Jam-2026/our-game║
+║  [ ] cd our-game/src/GGJ26                                       ║
+║  [ ] Open in Unity                                               ║
+║  [ ] Load "Scenes/Almog Prototype.unity"                         ║
+║  [ ] Press Play                                                  ║
+║  [ ] Die a few times                                             ║
+║  [ ] Get better                                                  ║
+║                                                                  ║
+║  REWARD: The satisfaction of defeating a shape-shifting boss     ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+```
 
 ---
 
 ## Controls
 
-| Action | Keyboard | Gamepad |
-|--------|----------|---------|
-| Move | WASD / Arrows | Left Stick |
-| Jump | Space | A Button |
-| Attack | Left Click / Enter | X Button |
-| Pause | Escape | Start |
-
-The whip direction depends on your vertical input. Hold W and attack for an upward strike. Otherwise you swing sideways.
+```
+╔═══════════════════════════════════════════════════════════════════╗
+║                    Q U A C K   F R E N Z Y                        ║
+╠═══════════════════════════════════════════════════════════════════╣
+║                                                                   ║
+║     KEYBOARD                          GAMEPAD                     ║
+║   ┌───┐                                                           ║
+║   │ W │                              ┌─────────┐                  ║
+║ ┌─┴─┬─┴─┐                            │  L-STICK│  MOVE            ║
+║ │ A │ D │  MOVE                      └─────────┘                  ║
+║ └───┴───┘                                                         ║
+║ ┌─────────┐                          ┌───┐                        ║
+║ │  SPACE  │  JUMP                    │ A │  JUMP                  ║
+║ └─────────┘                          └───┘                        ║
+║ ┌─────────┐                          ┌───┐                        ║
+║ │  CLICK  │  ATTACK                  │ X │  ATTACK                ║
+║ └─────────┘                          └───┘                        ║
+║ ┌─────────┐                          ┌───────┐                    ║
+║ │   ESC   │  PAUSE                   │ START │  PAUSE             ║
+║ └─────────┘                          └───────┘                    ║
+║                                                                   ║
+║   TIP: Hold W + Attack = Upward strike │ Otherwise = Side swing   ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+```
 
 ---
 
 ## How to Win
 
-1. Do not get hit
-2. Hit the boss
-3. Repeat until the boss health bar is empty
-
-Simple in theory. The boss has other plans.
+```
+┌────────────────────────────────────────────────────────────────┐
+│  [*] ACHIEVEMENT UNLOCKED: VICTORY                             │
+├────────────────────────────────────────────────────────────────┤
+│                                                                │
+│   ✓ Don't get hit                                              │
+│   ✓ Hit the boss                                               │
+│   ✓ Repeat until boss HP = 0                                   │
+│                                                                │
+│   Simple in theory. The boss has other plans.                  │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
 ## The Boss
 
-Five masks. Five forms. Six attacks. One very angry entity.
-
-Every time the boss takes damage, it switches masks. New mask means new attack pattern. You thought you had it figured out? Start over.
-
-### Attack Patterns
-
-| Attack | Mask | How Often | Danger | What Happens |
-|--------|------|-----------|--------|--------------|
-| **Slam** | Bear | Very Common | HIGH | Rises up, shadow tracks you, drops on your head |
-| **Spears** | Human | Common | MEDIUM | Five projectiles arc toward where you are standing |
-| **Swoop** | Bird | Medium | MEDIUM | Figure-8 flight pattern, spawns projectiles along the way |
-| **Charge** | Bull | Rare | HIGH | Full screen charge, left to right or right to left |
-| **Roar** | Lion | Rare | HIGH | AOE damage pulse, short telegraph before it hits |
-| **Laser** | None | Medium | EXTREME | 90 degree arc sweep, continuous damage, do not stand still |
-
-### The Catch
-
-The boss gets faster as it loses health. Attack cooldowns scale from 1.0x at full HP to 0.3x at low HP. The moment you think you are winning is the moment the game gets three times harder.
+```
+╔════════════════════════════════════════════════════════════════════╗
+║  [X] THE BOSS                                                      ║
+║  ████████████████████████████░░░░░░░░░░░░  HP: ???/???             ║
+╠════════════════════════════════════════════════════════════════════╣
+║                                                                    ║
+║  Five masks. Five forms. Five attacks. One very angry entity.      ║
+║                                                                    ║
+║  Every time the boss takes damage, it switches masks.              ║
+║  New mask = new attack pattern. You thought you figured it out?    ║
+║  Start over.                                                       ║
+║                                                                    ║
+╠════════════════════════════════════════════════════════════════════╣
+║  ATTACK PATTERNS                                                   ║
+╠════════════════════════════════════════════════════════════════════╣
+║                                                                    ║
+║  BEAR    │ SLAM   │ ████████░░ │ Shadow tracks you, drops down    ║
+║  HUMAN   │ SPEARS │ ██████░░░░ │ Five projectiles arc toward you  ║
+║  BIRD    │ SWOOP  │ ██████░░░░ │ Figure-8 flight, spawns shots    ║
+║  BULL    │ CHARGE │ ████████░░ │ Full screen charge, pick a side  ║
+║  LION    │ ROAR   │ ████████░░ │ AOE pulse, short telegraph       ║
+║                                                                    ║
+╠════════════════════════════════════════════════════════════════════╣
+║  [!] THE CATCH                                                     ║
+╠════════════════════════════════════════════════════════════════════╣
+║                                                                    ║
+║  Boss gets FASTER as HP drops:                                     ║
+║                                                                    ║
+║  100% HP  [████████████████████]  1.0x cooldown                    ║
+║   50% HP  [██████████░░░░░░░░░░]  0.6x cooldown                    ║
+║   10% HP  [██░░░░░░░░░░░░░░░░░░]  0.3x cooldown  ← GOOD LUCK       ║
+║                                                                    ║
+╚════════════════════════════════════════════════════════════════════╝
+```
 
 ---
 
@@ -161,7 +214,6 @@ Entity (Base Class)
                     |       +-- BullAttack
                     |       +-- LionAttack
                     |       +-- HumanAttack
-                    |       +-- LaserAttack
                     |       +-- SlamAttack
                     |               +-- TelegraphPhase
                     |               +-- SlamPhase
@@ -202,7 +254,6 @@ src/GGJ26/Assets/
 |   |           +-- BullAttack.cs
 |   |           +-- LionAttack.cs
 |   |           +-- HumanAttack.cs
-|   |           +-- LaserAttack.cs
 |   |           +-- SlamState/
 |   +-- Player/
 |   |   +-- PlayerController.cs
@@ -260,10 +311,23 @@ src/GGJ26/Assets/
 
 ## Known Issues
 
-| Issue | Status | Impact |
-|-------|--------|--------|
-| Whip has no visual sprite | Gameplay works | Damage collider functions, animation invisible |
-| Some particle textures missing | Cosmetic | Particles render as squares |
+```
+╔══════════════════════════════════════════════════════════════════╗
+║  [BUG] TRACKER                                      v0.1-jam     ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║  #001 [COSMETIC] Whip sprite missing                             ║
+║       └── Status: WON'T FIX (jam deadline)                       ║
+║       └── Impact: Damage works, animation invisible              ║
+║                                                                  ║
+║  #002 [COSMETIC] Particle textures missing                       ║
+║       └── Status: LOW PRIORITY                                   ║
+║       └── Impact: Particles render as squares                    ║
+║                                                                  ║
+║  Total: 2 issues │ Critical: 0 │ Cosmetic: 2                     ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+```
 
 ---
 
