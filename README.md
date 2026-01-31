@@ -80,15 +80,15 @@ Built in 48 hours for Global Game Jam 2026. The theme was masks. We took it lite
 ║                                                                   ║
 ║     KEYBOARD                          GAMEPAD                     ║
 ║   ┌───┐                                                           ║
-║   │ W │                              ┌─────────┐                  ║
-║ ┌─┴─┬─┴─┐                            │  L-STICK│  MOVE            ║
-║ │ A │ D │  MOVE                      └─────────┘                  ║
+║   │ W │                                                           ║
+║ ┌─┴─┬─┴─┐                                                         ║
+║ │ A │ D │  MOVE                                                   ║
 ║ └───┴───┘                                                         ║
 ║ ┌─────────┐                          ┌───┐                        ║
 ║ │  SPACE  │  JUMP                    │ A │  JUMP                  ║
 ║ └─────────┘                          └───┘                        ║
 ║ ┌─────────┐                          ┌───┐                        ║
-║ │  CLICK  │  ATTACK                  │ X │  ATTACK                ║
+║ │  CLICK  │  ATTACK              │ L-STICK │  ATTACK              ║
 ║ └─────────┘                          └───┘                        ║
 ║ ┌─────────┐                          ┌───────┐                    ║
 ║ │   ESC   │  PAUSE                   │ START │  PAUSE             ║
@@ -311,6 +311,9 @@ src/GGJ26/Assets/
 ![Input System](https://img.shields.io/badge/Input%20System-1.14.2-000000?style=for-the-badge&logo=unity&logoColor=white)
 ![URP](https://img.shields.io/badge/URP-17.0.4-000000?style=for-the-badge&logo=unity&logoColor=white)
 ![TMP](https://img.shields.io/badge/TextMeshPro-Built--in-000000?style=for-the-badge&logo=unity&logoColor=white)
+![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2022-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white)
+![Rider](https://img.shields.io/badge/Rider-2024.3-000000?style=for-the-badge&logo=rider&logoColor=white)
+![Coffee](https://img.shields.io/badge/Coffee-Mass%20Amounts-6F4E37?style=for-the-badge&logo=buymeacoffee&logoColor=white)
 
 ---
 
@@ -347,23 +350,6 @@ src/GGJ26/Assets/
 ║                                                                  ║
 ╚══════════════════════════════════════════════════════════════════╝
 ```
-
----
-
-## Global Game Jam 2026
-
-Built during the 48 hour jam. The theme was masks. We made a boss that literally changes masks. Sometimes the obvious approach is the right one.
-
-### Team Tools
-
-![Unity](https://img.shields.io/badge/Unity-6000.0.62f1-000000?style=for-the-badge&logo=unity&logoColor=white)
-![DOTween](https://img.shields.io/badge/DOTween-Demigiant-FF6F00?style=for-the-badge)
-![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2022-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white)
-![Rider](https://img.shields.io/badge/Rider-2024.3-000000?style=for-the-badge&logo=rider&logoColor=white)
-![Coffee](https://img.shields.io/badge/Coffee-Mass%20Amounts-6F4E37?style=for-the-badge&logo=buymeacoffee&logoColor=white)
-
----
-
 ## License
 
 MIT. Take the code. Use it. Modify it. Ship it. Credit is appreciated but not required.
