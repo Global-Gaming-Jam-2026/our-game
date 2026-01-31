@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class PlayerIdleState : StateBase
 {
+    [SerializeField] AnimationClip _idleAnimation;
+
     public override void OnStateEnter()
     {
         base.OnStateEnter();
-        Controller.Animator.SetBool("IsRunning", false);
+        Controller.Animator.Play(_idleAnimation.name);
         _isDone = true;
     }
 
