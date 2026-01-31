@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e00598c5cfc46684c808aa1064f142df
+guid: ae45ea1e45536db4f815d4d983b9cf76
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7386912219177876389
-    second: Platform_Ground_0
+      213: 8055198193971542117
+    second: whip_up_02_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Platform_Ground_0
+      name: whip_up_02_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 60
-        width: 1913
-        height: 345
+        x: 121
+        y: 75
+        width: 32
+        height: 237
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5409e4697a6c7990800000000000000
-      internalID: -7386912219177876389
+      spriteID: 568ba034410d9cf60800000000000000
+      internalID: 8055198193971542117
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Platform_Ground_0: -7386912219177876389
+      whip_up_02_0: 8055198193971542117
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

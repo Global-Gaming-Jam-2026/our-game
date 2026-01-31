@@ -19,7 +19,7 @@ public class BossHPBar : MonoBehaviour
         
         if (percentage <= 0)
         {
-            index = 5;
+            gameObject.SetActive(false);
         }
         else if (percentage <= 0.1f)
         {
